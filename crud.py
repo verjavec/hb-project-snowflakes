@@ -1,7 +1,7 @@
 import datetime
 
 """ CRUD operations """
-from model import db, User, connect_to_db, Pattern
+from model import db, User, connect_to_db, Pattern, Round, Repeater
 
 if __name__ == '__main__':
     from server import app
@@ -31,3 +31,23 @@ def get_user_by_email(email):
     """Return a user by email."""
     
     return User.query.filter(User.email == email).first()
+
+def create_sfround(beg_seq, end_seq, repeater_id):
+    """Create and return a new snowflake round."""
+
+    sfround = Round(beg_seq=beg_seq, end_seq=end_seq, repeater_id=repeater_id)
+
+    db.session.add(sfround)
+    db.session.commit()
+
+    return sfround
+
+def create_repeater(round_no, num_branches, sequence):
+    """Create and return a new repeater."""
+
+    repeater = Repeater(round_no=round_no, num_branches=num_branches, sequence=sequence)
+
+    db.session.add(repeater)
+    db.session.commit()
+
+    return repeater

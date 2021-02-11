@@ -18,6 +18,8 @@ class User(db.Model):
     email = db.Column(db.String, unique=True)
     password = db.Column(db.String)
 
+    # patterns = a list of pattern objects
+
     def __repr__(self):
         return f'<User user_id={self.user_id} name={self.name} email={self.email}>'
 
@@ -37,7 +39,7 @@ class Pattern(db.Model):
     point = db.Column(db.Integer)
     round_id = db.Column(db.Integer, db.ForeignKey('rounds.round_id'))
 
-    round = db.relationship('Round', backref='patterns')
+    sfround = db.relationship('Round', backref='patterns')
     user = db.relationship('User', backref='patterns')
 
     def __repr__(self):
@@ -51,17 +53,19 @@ class Round(db.Model):
     round_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    start_seq = db.Column(db.String)
+    beg_seq = db.Column(db.String)
     end_seq = db.Column(db.String)
     repeater_id = db.Column(db.Integer, db.ForeignKey('repeaters.repeater_id'))
 
     repeater = db.relationship('Repeater', backref='rounds')
 
+    # patterns = a list of pattern objects
+
     def __repr__(self):
-        return f'<Round round_id={self.round_id} start_seq={self.start_seq}>'
+        return f'<Round round_id={self.round_id} beg_seq={self.beg_seq}>'
 
 class Repeater(db.Model):
-    """A user."""
+    """A repeater."""
 
     __tablename__ = 'repeaters'
 
@@ -70,9 +74,12 @@ class Repeater(db.Model):
                         primary_key=True)
     sequence = db.Column(db.Text)
     round_no = db.Column(db.Integer)
+    num_branches = db.Column(db.Integer)
+
+    # rounds = a list of sfround objects
 
     def __repr__(self):
-        return f'<Round round_id={self.round_id} start_seq={self.start_seq}>'
+        return f'<Repeater repeater_id={self.repeater_id} round_no={self.round_no}>'
 
 
 def connect_to_db(flask_app, db_uri='postgresql:///snowflakes', echo=True):
