@@ -35,17 +35,17 @@ class Pattern(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     completion_date = db.Column(db.DateTime)
     num_rounds = db.Column(db.Integer)
-    branch = db.Column(db.Integer)
-    point = db.Column(db.Integer)
+    num_branches = db.Column(db.Integer)
+    num_points = db.Column(db.Integer)
     round_id = db.Column(db.Integer, db.ForeignKey('rounds.round_id'))
 
-    sfround = db.relationship('Round', backref='patterns')
+    sfround = db.relationship('SFRound', backref='patterns')
     user = db.relationship('User', backref='patterns')
 
     def __repr__(self):
         return f'<Pattern pattern_id={self.pattern_id} num_rounds={self.num_rounds}>'
 
-class Round(db.Model):
+class SFRound(db.Model):
     """A round."""
 
     __tablename__ = 'rounds'
@@ -74,7 +74,7 @@ class Repeater(db.Model):
                         primary_key=True)
     sequence = db.Column(db.Text)
     round_no = db.Column(db.Integer)
-    num_branches = db.Column(db.Integer)
+    repeater_num_branches = db.Column(db.Integer)
 
     # rounds = a list of sfround objects
 

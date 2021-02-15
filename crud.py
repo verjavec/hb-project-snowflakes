@@ -1,7 +1,7 @@
 import datetime
-
+from flask import Flask, flash, session
 """ CRUD operations """
-from model import db, User, connect_to_db, Pattern, Round, Repeater
+from model import db, User, connect_to_db, Pattern, SFRound, Repeater
 
 if __name__ == '__main__':
     from server import app
@@ -35,19 +35,41 @@ def get_user_by_email(email):
 def create_sfround(beg_seq, end_seq, repeater_id):
     """Create and return a new snowflake round."""
 
-    sfround = Round(beg_seq=beg_seq, end_seq=end_seq, repeater_id=repeater_id)
+    sfround = SFRound(beg_seq=beg_seq, end_seq=end_seq, repeater_id=repeater_id)
 
     db.session.add(sfround)
     db.session.commit()
 
     return sfround
 
-def create_repeater(round_no, num_branches, sequence):
+def create_repeater(round_no, repeater_num_branches, sequence):
     """Create and return a new repeater."""
 
-    repeater = Repeater(round_no=round_no, num_branches=num_branches, sequence=sequence)
+    repeater = Repeater(round_no=round_no, repeater_num_branches=repeater_num_branches, sequence=sequence)
 
     db.session.add(repeater)
     db.session.commit()
 
     return repeater
+
+
+
+def create_pattern(num_rounds, num_branches, num_points):
+    """Create and return a new pattern."""
+
+    user_id = session['user_id']
+    # user_id = 1  --- FOR INITIAL TESTING
+    num_rounds = num_rounds
+    num_branches = num_branches
+    num_points = num_points
+    round_id = 1
+    
+    pattern = Pattern(user_id=user_id, num_rounds=num_rounds, num_branches=num_branches, num_points=num_points, round_id=round_id)
+    # print('**********')
+    # print(f'num_rounds {num_rounds}, num_branches {num_branches}, num_points {num_points}')
+    # print(pattern)
+   
+    db.session.add(pattern)
+    db.session.commit()
+
+    return pattern

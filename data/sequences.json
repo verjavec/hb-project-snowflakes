@@ -1,91 +1,91 @@
 [
     {
         "round_no": 2,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": "ch 3",
         "sequence": "ch3, dc in ring",
         "end_seq": "ch1, hdc in top of starting ch3"
     },
     {
         "round_no": 3,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": "ch 1",
         "sequence": "ch3, dc in 1st sc",
         "end_seq": "sc in sp, ch 6"
     },
     {
         "round_no": 4,
-        "num_branches": 1,
+        "repeater_num_branches": 1,
         "beg_seq": "ch 1",
         "sequence": "4sc in sp, 4 sc in next sp, ch3, sl st in 3rd ch from hook, ch4, sl st in 4th ch from hook, ch3, sl st in 3rd ch from hook",
         "end_seq": "join with sl st to 1st sc"
     },
     {
         "round_no": 2,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": "ch 1",
         "sequence": "sc in ring, ch5",
         "end_seq": "ch2, dc in 1st sc to form last ch5 sp"
     },
     {
         "round_no": 3,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": "ch 1",
         "sequence": "sc in sp, ch7",
         "end_seq": "join with sl st to 1st sc"
     },
     {
         "round_no": 4,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": "ch 1",
         "sequence": "in each sp around work [sc, (ch3, sc) twice, (ch3, sl st in 3rd ch from hook) 3times, sc (ch3, sc) twice]",
         "end_seq": "join with sl st to 1st sc"
     },
     {
         "round_no": 2,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": "ch 3, dc in ring",
         "sequence": "ch3, 2dc in ring",
         "end_seq": "ch1, hdc in 1st dc to form last ch3 sp"
     },
     {
         "round_no": 3,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": "ch 1",
         "sequence": "sc in sp, ch5",
         "end_seq": "join with sl st to 1st sc"
     },
     {
         "round_no": 4,
-        "num_branches": 2,
+        "repeater_num_branches": 2,
         "beg_seq": "sl st in first sp, ch1",
         "sequence": "3sc in sp, (ch6, sl st in 3rd ch from hook)*5, sl st in 2nd ch above 3rd sc, ch1",
         "end_seq": "join with sl st to 1st sc"
     },
     {
         "round_no": 2,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": " ",
         "sequence": "ch11, sc in ring",
         "end_seq": "ch2, dc in 1st sc from hook"
     },
     {
         "round_no": 3,
-        "num_branches": 1,
+        "repeater_num_branches": 1,
         "beg_seq": "ch 1",
         "sequence": "sc in st, [sc, (ch11, sl st in 11th ch from hook) 3 times, sc] in next st, sc in next st, ch3",
         "end_seq": "join with sl st to 1st sc"
     },
     {
         "round_no": 4,
-        "num_branches": 0,
+        "repeater_num_branches": 0,
         "beg_seq": "ch1",
         "sequence": "sc in loop, ch, in next loop work(sc, ch1, hdc, ch1, dc, ch4, sl st in 4th ch from hook, dc, ch1, hdc, ch1, sc), ch5, sc in next loop, ch5 ",
         "end_seq": "join with sl st to 1st sc"
     },
     {
         "round_no": 2,
-        "num_branches": 3,
+        "repeater_num_branches": 3,
         "beg_seq": "ch 8, sl st in 5th ch from hook, dc in ring",
         "sequence": "ch9, (dtr, ch5, sl st) in 6th ch from hook, ch7, sc in 2nd ch from hook and in next 3 chs, ch8, (tr, ch4, sl st) in 5th ch from hook, ch6, (dtr, ch4, sl st) in base of tr, sl st in next 3 chs, ch5, sc in 2nd ch from hook and next 3 chs, sl st in free loop of ch at base of next sc and in next 2 chs, ch6, (dtr, ch5, sl st) in 6th ch from hook, sl st in free loop of ch at base of next dtr and in next 2 chs, ch1",
         "end_seq": "repeat previous sequence from * to *, dc in ring, join with sl st to 3rd ch of beginning ch8"

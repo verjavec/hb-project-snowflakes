@@ -28,7 +28,7 @@ r = 1
 for sfround in sequence_data:
    
     round_no = sfround['round_no']
-    num_branches = sfround['num_branches']
+    repeater_num_branches = sfround['repeater_num_branches']
     beg_seq = sfround['beg_seq']
     sequence = sfround['sequence']
     end_seq = sfround['end_seq']
@@ -36,7 +36,7 @@ for sfround in sequence_data:
     print('**********')
     print(r)
     
-    db_repeaters=crud.create_repeater(round_no, num_branches, sequence)
+    db_repeaters=crud.create_repeater(round_no, repeater_num_branches, sequence)
     repeaters_in_db.append(db_repeaters)
     
     db_sfround=crud.create_sfround(beg_seq, end_seq, repeater_id)
@@ -44,7 +44,7 @@ for sfround in sequence_data:
     r += 1
 
 for n in range(10):
-    email = f'user{n}@test.com'  # Voila! A unique email!
+    email = f'user{n}@test.com'  
     name = f'User{n}'
     password = 'test'
 
