@@ -21,29 +21,20 @@ model.db.create_all()
 with open('data/sequences.json') as f:
     sequence_data = json.loads(f.read())
 
-rounds_in_db = []
-repeaters_in_db = []
-r = 1
+sfrounds_in_db = []
 
 for sfround in sequence_data:
    
-    round_no = sfround['round_no']
-    repeater_num_branches = sfround['repeater_num_branches']
+    sfround_no = sfround['sfround_no']
+    seq_num_branches = sfround['seq_num_branches']
     beg_seq = sfround['beg_seq']
     sequence = sfround['sequence']
     end_seq = sfround['end_seq']
-    repeater_id = r
-    print('**********')
-    print(r)
     
-    db_repeaters=crud.create_repeater(round_no, repeater_num_branches, sequence)
-    repeaters_in_db.append(db_repeaters)
+    db_sfround=crud.create_sfround(beg_seq, end_seq, sfround_no, sequence, seq_num_branches)
+    sfrounds_in_db.append(db_sfround)
     
-    db_sfround=crud.create_sfround(beg_seq, end_seq, repeater_id)
-    rounds_in_db.append(db_sfround)
-    r += 1
-
-for n in range(10):
+for n in range(5):
     email = f'user{n}@test.com'  
     name = f'User{n}'
     password = 'test'

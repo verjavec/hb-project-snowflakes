@@ -27,13 +27,14 @@ def all_patterns():
 
     return render_template('all_patterns.html', patterns=patterns)
 
-### --- This will be needed when I'm ready to start testing pattern details
-# @app.route('/patterns/<pattern_id>')
-# def show_pattern(pattern_id):
-#     """ Show details for a particular pattern """
+### --- This might be needed when I'm ready to start testing pattern details
+@app.route('/patterns/<pattern_id>')
+def show_pattern(pattern_id):
+    """ Show details for a particular pattern """
 
-#     pattern = crud.get_pattern_by_id(pattern_id)
-#     return render_template('pattern_details.html', pattern=pattern)
+    pattern = crud.get_pattern_by_id(pattern_id)
+    sfrounds = crud.get_sfrounds_by_sfround_ids(pattern_id)
+    return render_template('pattern_details.html', pattern=pattern, sfrounds=sfrounds)
 
 @app.route('/users')
 def all_users():
@@ -71,15 +72,6 @@ def register_user():
 def log_in():
     """Log In user."""
 
-    # session['current_user'] = username
-    #         flash(f'Logged in as {username}')
-    #         return redirect('/')
-
-    #     else:
-    #         flash('Wrong password!')
-    #         return redirect('/login')
-
-
     email_entered = request.form.get('email')
     password_entered = request.form.get('password')
     
@@ -91,7 +83,6 @@ def log_in():
         session['username'] = user.name 
         session['user_id'] = user.user_id
         username = session['username']
-        # user_id = session['user_id']
         flash(f'You are successfully logged in, {username}!')
     else:
         flash('Incorrect password. Please try again.')
@@ -107,14 +98,26 @@ def users_choice():
 @app.route('/get_choices')
 def get_choices():
     """ Get option choices from users_choice.html for snowflake pattern. """
-    
-    
-    num_rounds = request.args.get('num_rounds')
-    num_branches = request.args.get('num_branches')
-    num_points = request.args.get('num_points')
+ 
+    num_rounds = int(request.args.get('num_rounds'))
+    num_branches = int(request.args.get('num_branches'))
+    num_points = int(request.args.get('num_points'))
     
     pattern = crud.create_pattern(num_rounds, num_branches, num_points)
-            
+    print('***!!!**app route get choices after pattern creation **!!!***')
+    print(pattern)
+
+    for rnd in range(num_rounds):
+        print('*****')
+        rnd_no = rnd + 1
+        print(rnd_no)
+        if rnd_no >=2:
+            # if rnd_no != num_rounds:
+                sfround_id = crud.choose_sfround(0, rnd_no)
+                print('*****')
+                print(sfround_id)
+                pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
+                print(pattern_round)
     return redirect('/users_choice')
 
 # @app.route('/api/choices/<int:pattern_id>')
@@ -131,7 +134,7 @@ def get_choices():
 #                         'num_rounds': pattern.num_rounds,
 #                         'num_points': pattern.num_points,
 #                         'num_branches': pattern.num_branches
-#                         'round_id': pattern.round_id})
+#                         
 #     else:
 #         return jsonify({'status': 'error',
 #                         'message': 'No pattern found with that ID'})

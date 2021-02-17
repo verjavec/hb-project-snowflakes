@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}All Patterns{% endblock %}
+
+{% block body %}
+    <h1>All Patterns</h1>
+    
+        {% for pattern in patterns %}
+    <table>    
+        <td>
+            <a href = "/patterns/{{ pattern.pattern_id }}">
+            Pattern_id: {{ pattern.pattern_id }}</a>
+            
+        </td>
+        <td>
+            Number of rounds: {{ pattern.num_rounds }}
+        </td>
+        <td>
+            Number of branches: {{ pattern.num_branches }}
+        </td>
+        <td>
+            Number of points: {{ pattern.num_points }}
+        </td>
+    
+        {% endfor %}
+    </table>
+{% endblock %}

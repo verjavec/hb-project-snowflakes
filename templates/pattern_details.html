@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ session['username'] }} - Pattern Details{% endblock %}
+
+{% block body %}
+    <div id=pattern_id>Pattern ID {{ pattern.pattern_id }}</div>
+    <div id=num_rounds>Number of rounds {{ pattern.num_rounds }}</div>
+    <div id=num_branches>Number of branches {{ pattern.num_branches }}</div>
+    <div id=num_points>Number of points {{ pattern.num_points }}</div>
+    <!-- <div id=test_sfrounds></div>Sfrounds {{ sfrounds }}<div> -->
+    
+    <section id=sfrounds>
+        <ul>
+            <li>    
+                Rnd 1: Chain 6, sl st to first chain to form a loop
+            </li>
+            {% for sfround in sfrounds %}
+            <li>
+                Rnd {{ sfround.sfround_no }}: {{ sfround.beg_seq }} 
+                    [{{ sfround.sequence }}] {{ pattern.num_points}} times.
+                    {{ sfround.end_seq }}
+            </li> 
+            {% endfor %}
+        </ul>
+    </section>
+
+{% endblock %}

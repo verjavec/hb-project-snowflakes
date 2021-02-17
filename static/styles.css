@@ -1,0 +1,37 @@
+/* body {
+	font-family: sans-serif;
+	display: grid;
+	grid-template: "desc desc" auto
+	               "form info" auto / 1fr 1fr;
+	grid-gap: 2em;
+} */
+
+dt {
+	font-weight: bold;
+}
+
+form {
+	padding: 0.5em;
+	margin: 0.25em;
+	border: 1px solid black;
+}
+
+p, dt {
+	font-size: 1.2em;
+}
+
+h3 {
+	font-size: 1.4em;
+}
+
+#description {
+	grid-area: desc;
+}
+
+#select_sequences {
+	grid-area: form;
+}
+
+#display-choices {
+	grid-area: info;
+}
