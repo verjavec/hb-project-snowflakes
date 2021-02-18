@@ -2,7 +2,7 @@
 // TODO Figure out what I need to change for this to work.  
 // Might change submit to a button instead to use the sample code I brought over.
 
-console.log('ajax works!')
+// alert("js connected")
 
 function displayChoices(evt) {
   evt.preventDefault(); 

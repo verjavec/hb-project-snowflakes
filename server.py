@@ -107,17 +107,21 @@ def get_choices():
     print('***!!!**app route get choices after pattern creation **!!!***')
     print(pattern)
 
-    for rnd in range(num_rounds):
+    for rnd in range(2,(num_rounds +1)):
+    
         print('*****')
-        rnd_no = rnd + 1
-        print(rnd_no)
-        if rnd_no >=2:
-            # if rnd_no != num_rounds:
-                sfround_id = crud.choose_sfround(0, rnd_no)
-                print('*****')
-                print(sfround_id)
+        
+        if rnd >= 2:
+        
+            if rnd != num_rounds:
+                sfround_id = crud.choose_sfround(0, rnd)
+                # print('*****')
+                # print(sfround_id)
                 pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
-                print(pattern_round)
+                # print(pattern_round)
+            else:
+                sfround_id = crud.choose_sfround(num_branches, rnd)
+                pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
     return redirect('/users_choice')
 
 # @app.route('/api/choices/<int:pattern_id>')
