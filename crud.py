@@ -71,16 +71,6 @@ def create_pattern(num_rounds, num_branches, num_points):
 
     return pattern
     
-# def get_all_repeaters_with_num_branches(num_branches):
-#     """Return all repeaters with the required number of branches."""
-    
-#     return Repeater.query.filter(Repeater.repeater_num_branches == num_branches).all()
-
-# def get_all_repeaters_for_round_no(num_rounds):
-#     """ Return all repeaters with up to the required number of rounds."""
-
-#     return Repeater.query.filter(Repeater.round_no == num_rounds).all()
-
 def choose_sfround(num_branches, sfround_no):
     """ Return a random round that has the same number of branches the user chose.
 
@@ -89,15 +79,18 @@ def choose_sfround(num_branches, sfround_no):
         
         get_all_sfrounds_with_round_no_and_num_rounds is called to return
         a list of sequences for the current round with the number of branches 
-        necessary.
+        necessary. 
 
         One is chosen randomly from that list to be the repeated stitch sequence
         for that round.
 
      """
+
     print('***!!choose_sfround!!***')
     print(num_branches, sfround_no)
+
     avail_sfrounds = get_all_sfrounds_with_sfround_no_and_num_branches(num_branches, sfround_no)
+
     sfround = random.choice(avail_sfrounds)
     sfround_id = sfround.sfround_id
     print(avail_sfrounds)
@@ -105,8 +98,10 @@ def choose_sfround(num_branches, sfround_no):
     return sfround_id
 
 def get_all_sfrounds_with_sfround_no_and_num_branches(num_branches, sfround_no):
-    """ Return all sfrounds that have both the round number 
-            and the required number of branches. """
+    """ Return all sfrounds that have sfround number and number of branches. 
+
+        Used in choose_sfround()        
+    """
     
     avail_sfrounds = Sfround.query.filter((Sfround.sfround_no == sfround_no) 
                         & (Sfround.seq_num_branches == num_branches)).all()
@@ -124,12 +119,17 @@ def get_pattern_by_id(pattern_id):
     return Pattern.query.get(pattern_id)
 
 def get_pattern_round_by_pattern_id(pattern_id):
-    """ Return all pattern_rounds used for a specific pattern id """
+    """ Return all pattern_rounds used for a specific pattern id
+    
+        Used in get_sfrounds_by_pattern_id(pattern_id)    
+                & get_sfrounds_by_sfround_ids(pattern_id)
+    """
 
     return Pattern_round.query.filter(Pattern_round.pattern_id == pattern_id).all()
 
 def get_sfrounds_by_pattern_id(pattern_id):
     """ Return all sfrounds used for a specific pattern id """
+    
     sfround_id_list = []
     pattern_rounds = get_pattern_round_by_pattern_id(pattern_id)
     

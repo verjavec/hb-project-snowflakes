@@ -40,6 +40,8 @@ class Pattern(db.Model):
     
     user = db.relationship('User', backref='patterns')
 
+    # patterns_rounds = a list of patterns_rounds objects
+
     def __repr__(self):
         return f'<Pattern pattern_id={self.pattern_id} num_rounds={self.num_rounds}>'
 
@@ -56,6 +58,8 @@ class Sfround(db.Model):
     sfround_no = db.Column(db.Integer)
     sequence = db.Column(db.Text)
     seq_num_branches = db.Column(db.Integer)
+
+    # patterns_rounds = a list of patterns_rounds objects
 
     def __repr__(self):
         return f'<Sfround sfround_id={self.sfround_id} beg_seq={self.beg_seq} end_seq={self.end_seq} seq_mum_branches={self.seq_num_branches}>'

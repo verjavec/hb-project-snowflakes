@@ -1,46 +1,37 @@
 "use strict";
-// TODO Figure out what I need to change for this to work.  
-// Might change submit to a button instead to use the sample code I brought over.
 
 // alert("js connected")
 
-function displayChoices(evt) {
-  evt.preventDefault(); 
-
-    // What sends that data to that route?
-    //      This does - @app.route('/api/choices/<int:pattern_id>')
-  let num_rounds = $('#num_rounds').val();  
-  let url = '/users_choice?num_rounds=' + num_rounds;
-  console.log(num_rounds);
-        
-    // Want to display what was just selected. 
-  $.get(url, (res) => {
-      console.log(res);
-    $('#num_rounds').text(res['num_rounds']);
-    // $('#num_branches').text(res['num_branches']);
-    // $('#num_points').text(res['num_points']);
+// function displayChoices() {
+//   evt.preventDefault(); 
+//     console.log("made it to the function")
     
-  });    
-//  This part is an example that I was going to try to imitate. 
-// May change submit to a button.
-//  $('button').on('click', (evt) => {
-//     const clickedBtn = evt.target;
-//     disableLetterButton(clickedBtn);
+//     // CHANGE 1 ----- Goes with Change 1 in server.py
+//     $.get("/get_choices", (res) => {
+//       console.log(res);
+//       console.log(form_data);
 
-//     const letter = clickedBtn.innerHTML;
-}
-// function displayChoices(evt)  {
-//     evt.preventDefault();
+//       $("#dis-num-rounds").text(res["num_rounds"]);
+//       $("#dis-num-branches").text(res["num_branches"]);
+//       $("#dis-num-points").text(res["num_points"]);
+    
+//     });    
+// }
 
-//     console.log('Made it to ajax.js');
+// $("#get-choices").on("submit", displayChoices)
+// // end of CHANGE 1
 
-//     $.get($('#num_rounds'), (res) => {
-//         console log('Made it to get');
-//         console log(res);
-//         $('#dis_num_rounds').text(res['num_rounds']);
-//         // $('#dis_num_branches').text(res['num_branches']);
-//         // $('#dis_num_points').text(res['num_points']);
-// });
+//     // CHANGE 2 ----- Goes with adding button in users_choice.html
+//     //          ----- and change 2 in server.py
+// //     $.get("/display_choices", (res) => {
+// //       console.log(res);
 
+// //       $("#dis-num-rounds").text(res["num_rounds"]);
+// //       $("#dis-num-branches").text(res["num_branches"]);
+// //       $("#dis-num-points").text(res["num_points"]);
+    
+// //     });    
+// // }
 
-$('#get-choices').on('submit', displayChoices)
+// // $("#display-choices").on("click", displayChoices)
+// //end of CHANGE 2

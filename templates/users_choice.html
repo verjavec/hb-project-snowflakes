@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+    <script src="/static/ajax.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
 {% block title %}Snowflake Choices{% endblock %}
 
 {% block body %}
@@ -42,7 +47,7 @@
             </label>
             <select id="num-points" name="num_points">
                 <option value="">Choose the number of points</option>
-                    {% for p in range(5, 13) %}
+                    {% for p in range(5, 9) %}
                         <option value="{{ p }}">{{ p }}</option>
                     {% endfor %}
             </select>
@@ -51,21 +56,21 @@
     </form>
     </section>
 
-    <section id="display-choices">
+    <!-- <section id="display-choices">
         <h3>Choice Info</h3>
 
     <dl>
       <dt>Number of Rounds</dt>
-      <dd id="dis_num_rounds">Unknown</dd>
+      <dd id="dis-num-rounds">Unknown</dd>
 
       <dt>Number of Points</dt>
-      <dd id="dis_num_points">Unknown</dd>
+      <dd id="dis-num-points">Unknown</dd>
 
       <dt>Number of Branches</dt>
-      <dd id="dis_num_branches">Unknown</dd>
+      <dd id="dis-num-branches">Unknown</dd>
     </dl>
-    </section> 
-
+    -->
+    
     <p>
         <a href="/patterns">View all of the patterns</a>
     </p>    

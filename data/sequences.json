@@ -56,6 +56,13 @@
         "end_seq": "join with sl st to 1st sc"
     },
     {
+        "sfround_no": 2,
+        "seq_num_branches": 4,
+        "beg_seq": "ch 1",
+        "sequence": "sc in ring, ch 7, sl st in 2nd ch from hook and next 3 ch, ch 5, sl st in 2nd ch from hook and next 2 ch, ch 4, sl st in 2nd ch from hook and next ch, ch 4, sl st in 2nd ch from hook and next ch, ch 3, sl st 2nd ch from hook, sl st in remaining ch of previous ch 4, ch 3, sl st in 2nd ch from hook and next ch, sl st in remaining ch of previous ch 4, ch 4, sl st in 2nd ch from hook and next 2 ch, sl st in remaining 2 of previous ch 5, ch 5, sl st in 2nd ch from hook and next 3 ch, sl st in remaining 2 of previous ch 7, ch 3, sc in 3rd ch from hook",
+        "end_seq": "join with sl st to 1st sc"
+    },
+    {
         "sfround_no": 4,
         "seq_num_branches": 2,
         "beg_seq": "sl st in first sp, ch1",
@@ -89,5 +96,61 @@
         "beg_seq": "ch 8, sl st in 5th ch from hook, dc in ring",
         "sequence": "ch 9, (dtr, ch 5, sl st) in 6th ch from hook, ch 7, sc in 2nd ch from hook and in next 3 chs, ch 8, (tr, ch 4, sl st) in 5th ch from hook, ch 6, (dtr, ch 4, sl st) in base of tr, sl st in next 3 chs, ch 5, sc in 2nd ch from hook and next 3 chs, sl st in free loop of ch at base of next sc and in next 2 chs, ch 6, (dtr, ch 5, sl st) in 6th ch from hook, sl st in free loop of ch at base of next dtr and in next 2 chs, ch 1",
         "end_seq": "repeat previous sequence from * to *, dc in ring, join with sl st to 3rd ch of beginning ch8"
+    },
+    {
+        "sfround_no": 2,
+        "seq_num_branches": 1,
+        "beg_seq": "ch 1",
+        "sequence": "sc in ring, ch6, sl st in 4th ch from hook, (ch4, sl st in 4th ch from hook) twice, ch2",
+        "end_seq": "join with sl st to 1st sc"
+    },
+    {
+        "sfround_no": 2,
+        "seq_num_branches": 2,
+        "beg_seq": "ch 1",
+        "sequence": "sc in ring, ch5, sl st in 2nd ch from hook and in next ch, ch4, sl st in 2nd ch from hook and in next ch, ch3, sl st in 2nd ch from hook and next ch, sl st in remaining ch",
+        "end_seq": "join with sl st to 1st sc"
+    },
+    {
+        "sfround_no": 4,
+        "seq_num_branches": 3,
+        "beg_seq": "ch 3, dc in sp",
+        "sequence": "ch 6, sc in 2nd ch from hook and in next 4 ch, ch 4, yarn over, insert hook in 4th ch from hook, yarn over and pull up a loop, yarn over and draw through 2 loops on hook, yarn over, insert hook in 4th ch from hook, yarn over and pull up a loop, yarn over and draw through 2 loops on hook, yarn over and draw through all 3 loops on hook, ch 5, sc in 2nd ch from hook and in next 3 chs, ch 7, sc in 2nd ch from hook and in next 4 chs, ch 5, sl st in 5th ch from hook, ch 6, sc in 2nd ch from hook and in next 4 chs, sl st in free loop of ch at base of next sc and in next ch, ch 5, sc in 2nd ch from hook and in next 3 chs, sl st in free loop of ch at base of previous ch 4 and yarn overs, ch 6, sc in 2nd ch from hook and in next 4 chs, 2 dc in sp, (ch3, yarn over, insert hook in 4th ch from hook, yarn over and pull up a loop, yarn over and draw through 2 loops on hook, yarn over, insert hook in 4th ch from hook, yarn over and pull up a loop, yarn over and draw through 2 loops on hook, yarn over and draw through all 3 loops on hook) twice, (2 dc in next sp (except for last repeat))",
+        "end_seq": "join with sl st to 1st sc"
+    },
+    {
+        "sfround_no": 4,
+        "seq_num_branches": 4,
+        "beg_seq": "",
+        "sequence": "{sl st, (ch 5, sl st in 5th ch from hook) 3 times, sl st} in next st, ch 4, sl st in center ch of loop",
+        "end_seq": "join with sl st to 1st st"
+    },
+    {
+        "sfround_no": 3,
+        "seq_num_branches": 0,
+        "beg_seq": "ch 1",
+        "sequence": "sc in sp, ch 12, sc in next ch 8 sp, ch 12",
+        "end_seq": "join with sl st to 1st sc"
+    },
+    {
+        "sfround_no": 4,
+        "seq_num_branches": 3,
+        "beg_seq": "sl st in 1st loop, ch 1",
+        "sequence": "in same loop and in each loop around work {3sc, (ch 3, sl st in 3rd ch from hook, sc) 3 times, (ch 5, sl st in 3rd ch from hook) 3 times, ch 8, sl st in 8th ch from hook, ch 3, sl st in 3rd ch from hook, (ch 5, sl st in 3rd ch from hook) twice, ch 2, sc, (ch 3, sl st in 3rd ch from hook, sc) twice, ch 3, sl st in 3rd ch from hook, 3sc}",
+        "end_seq": "join with sl st to 1st sc"
+    },
+    {
+        "sfround_no": ,
+        "seq_num_branches": ,
+        "beg_seq": "",
+        "sequence": "  ",
+        "end_seq": ""
+    },
+    {
+        "sfround_no": 3,
+        "seq_num_branches": 2,
+        "beg_seq": "ch 1",
+        "sequence": "sc in next sp (unless it is the first for this round, then in same sp), (ch4, sl st in 3rd ch from hook) twice, (ch3, sl st in 3rd ch from hook) twice, ch4, sl st in 3rd ch from hook, ch1, sc in same sp, ch4, sl st in 3rd ch from hook, ch1",
+        "end_seq": "join with sl st to 1st sc"
     }
 ]

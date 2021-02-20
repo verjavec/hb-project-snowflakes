@@ -1,7 +1,7 @@
 """ Server for Snowflake patterns. """
 
 from flask import (Flask, render_template, request, flash, session,
-                   redirect)
+                   redirect, jsonify)
 from model import connect_to_db
 import crud
 
@@ -27,7 +27,6 @@ def all_patterns():
 
     return render_template('all_patterns.html', patterns=patterns)
 
-### --- This might be needed when I'm ready to start testing pattern details
 @app.route('/patterns/<pattern_id>')
 def show_pattern(pattern_id):
     """ Show details for a particular pattern """
@@ -80,8 +79,10 @@ def log_in():
     if user is None:
         flash('This email address is not associated with an account. Please try again.')
     elif password_entered == user.password:
+        # Send username to the session to be used elsewhere
         session['username'] = user.name 
-        session['user_id'] = user.user_id
+        # Send user_id to the session to be used for database creation
+        session['user_id'] = user.user_id 
         username = session['username']
         flash(f'You are successfully logged in, {username}!')
     else:
@@ -91,59 +92,45 @@ def log_in():
 
 @app.route('/users_choice')
 def users_choice():
-    """ Renders users_choice.html """
+    """ Renders users_choice.html 
+    
+        This is the form that allows the user to choose num_branches, 
+        num_points and num_rounds.
+    """
     
     return render_template('users_choice.html')
 
 @app.route('/get_choices')
 def get_choices():
-    """ Get option choices from users_choice.html for snowflake pattern. """
+    """ Get option choices from users_choice.html for snowflake pattern. 
+    
+        After the user chooses how many of each, this route will grab them,
+        make them integers, and create the pattern database.
+    """
  
     num_rounds = int(request.args.get('num_rounds'))
     num_branches = int(request.args.get('num_branches'))
     num_points = int(request.args.get('num_points'))
     
     pattern = crud.create_pattern(num_rounds, num_branches, num_points)
-    print('***!!!**app route get choices after pattern creation **!!!***')
-    print(pattern)
+    # print('***!!!**app route get choices after pattern creation **!!!***')
+    # print(pattern)
 
+    # This for loop will call the crud functions that generate the random
+    # rounds. Round 1 is always "ch6 to form a loop". The final round is the only 
+    # one that needs to look at the number of branches. Rounds 2 through
+    # (final round - 1) all need to have number of branches equal to zero.
     for rnd in range(2,(num_rounds +1)):
     
-        print('*****')
-        
-        if rnd >= 2:
+        if rnd >= 2: # this probably isn't needed anymore - remove & TEST!
         
             if rnd != num_rounds:
                 sfround_id = crud.choose_sfround(0, rnd)
-                # print('*****')
-                # print(sfround_id)
-                pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
-                # print(pattern_round)
             else:
                 sfround_id = crud.choose_sfround(num_branches, rnd)
-                pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
-    return redirect('/users_choice')
+            pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
 
-# @app.route('/api/choices/<int:pattern_id>')
-# def get_pattern_by_id(pattern_id):
-#     """Return a pattern from the database as JSON."""
-
-#     pattern = Pattern.query.get(pattern_id)
-
-#     if pattern:
-#         return jsonify({'status': 'success',
-#                         'pattern_id': pattern.pattern_id,
-#                         'user_id': pattern.user_id,
-#                         'date_completed': pattern.date_completed,
-#                         'num_rounds': pattern.num_rounds,
-#                         'num_points': pattern.num_points,
-#                         'num_branches': pattern.num_branches
-#                         
-#     else:
-#         return jsonify({'status': 'error',
-#                         'message': 'No pattern found with that ID'})
-
-
+    return redirect ('/users_choice') 
 
 if __name__ == '__main__':
     connect_to_db(app)
