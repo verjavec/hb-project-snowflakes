@@ -1,3 +1,20 @@
+body {
+	background-color: #7bb5f8; 
+}
+
+.container {
+	width: 100%;
+	margin: auto;
+}
+
+#select_choices {
+	width: 50%;
+    float: left;
+}
+
+#choice_img {
+	margin-left: 50%;
+}
 
 dt {
 	font-weight: bold;
@@ -17,14 +34,4 @@ h3 {
 	font-size: 1.4em;
 }
 
-#description {
-	grid-area: desc;
-}
 
-#select_sequences {
-	grid-area: form;
-}
-
-#display-choices {
-	grid-area: info;
-}

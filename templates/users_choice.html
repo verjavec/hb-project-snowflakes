@@ -8,54 +8,64 @@
 
 {% block body %}
   
-  <h1>Are you ready to make a snowflake pattern, {{ session['username'] }}?</h1>
-  <h2>You have some choices to make about how you'd like your snowflake to look.</h2>
-  
-    <div>
-        <h3>Select Choices</h3>
-
-    </div>
-    <!-- <form id="get-choices"> -->
-    <form id="get-choices" action='/get_choices'>
-        <div id='num-rounds'>
-            <label for="num-rounds">
-            Select number of rounds:
-            </label>
-            <select id="num-rounds" name="num_rounds">
-                <option value="">Choose the number of Rounds</option>
-                    {% for r in range(2, 5) %}
-                        <option value="{{ r }}">{{ r }}</option>
-                    {% endfor %}
-            </select>
-        </div>  
+    <h1>Are you ready to make a snowflake pattern, {{ session['username'] }}?</h1>
+    <h2>You have some choices to make about how you'd like your snowflake to look.
+        The example shows the choices and how many that the example has of each choice.
+    </h2>
+    <section class="container">
+        <section id="select_choices">
+            <div>
+                <h3>Select Choices</h3>
+            </div>
+            
+            <form id="get-choices" action='/get_choices'>
+                <div id='num-rounds'>
+                    <label for="num-rounds">
+                    Select number of rounds:
+                    </label>
+                    <select id="num-rounds" name="num_rounds">
+                        <option value="">Choose the number of Rounds</option>
+                            {% for r in range(2, 5) %}
+                                <option value="{{ r }}">{{ r }}</option>
+                            {% endfor %}
+                    </select>
+                </div>  
+            
+                <div id="num-branches"></div>
+                    <label for="num-branches">
+                        Select number of branches:
+                    </label>
+                    <select id="num-branches" name="num_branches">
+                        <option value="">Choose the number of branches</option>
+                            {% for n in range(0, 5) %}
+                                <option value="{{ n }}">{{ n }}</option>
+                            {% endfor %}
+                    </select>
+                </div>  
         
-        <div id="num-branches"></div>
-            <label for="num-branches">
-                Select number of branches:
-            </label>
-            <select id="num-branches" name="num_branches">
-                <option value="">Choose the number of branches</option>
-                    {% for n in range(0, 5) %}
-                        <option value="{{ n }}">{{ n }}</option>
-                    {% endfor %}
-            </select>
-        </div>  
-        
-        <div id="num-points">
-            <label for="num-points">
-                Select number of points:
-            </label>
-            <select id="num-points" name="num_points">
-                <option value="">Choose the number of points</option>
-                    {% for p in range(5, 9) %}
-                        <option value="{{ p }}">{{ p }}</option>
-                    {% endfor %}
-            </select>
-        </div>  
-        <input type="submit">
-    </form>
+                <div id="num-points">
+                    <label for="num-points">
+                        Select number of points:
+                    </label>
+                    <select id="num-points" name="num_points">
+                        <option value="">Choose the number of points</option>
+                            {% for p in range(5, 9) %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                    </select>
+                </div>  
+                <input type="submit">
+            </form>
+            <p>
+                <a href="/patterns">View all of the patterns</a>
+            </p>
+        </section>    
+    
+        <section id="choice_img">
+            <img src="/static/snowflake.png">
+        </section>
     </section>
-
+    
     <!-- <section id="display-choices">
         <h3>Choice Info</h3>
 
@@ -71,8 +81,6 @@
     </dl>
     -->
     
-    <p>
-        <a href="/patterns">View all of the patterns</a>
-    </p>    
+        
 {% endblock %}
 
