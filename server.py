@@ -19,22 +19,6 @@ def homepage():
 
     return render_template('homepage.html')
 
-@app.route('/patterns')
-def all_patterns():
-    """ View all patterns """
-
-    patterns = crud.get_patterns()
-
-    return render_template('all_patterns.html', patterns=patterns)
-
-@app.route('/patterns/<pattern_id>')
-def show_pattern(pattern_id):
-    """ Show details for a particular pattern """
-
-    pattern = crud.get_pattern_by_id(pattern_id)
-    sfrounds = crud.get_sfrounds_by_sfround_ids(pattern_id)
-    return render_template('pattern_details.html', pattern=pattern, sfrounds=sfrounds)
-
 @app.route('/users')
 def all_users():
     """ View all users """
@@ -111,7 +95,7 @@ def get_choices():
     num_rounds = int(request.args.get('num_rounds'))
     num_branches = int(request.args.get('num_branches'))
     num_points = int(request.args.get('num_points'))
-    
+
     pattern = crud.create_pattern(num_rounds, num_branches, num_points)
     # print('***!!!**app route get choices after pattern creation **!!!***')
     # print(pattern)
@@ -121,16 +105,57 @@ def get_choices():
     # one that needs to look at the number of branches. Rounds 2 through
     # (final round - 1) all need to have number of branches equal to zero.
     for rnd in range(2,(num_rounds +1)):
-    
-        if rnd >= 2: # this probably isn't needed anymore - remove & TEST!
-        
-            if rnd != num_rounds:
-                sfround_id = crud.choose_sfround(0, rnd)
-            else:
-                sfround_id = crud.choose_sfround(num_branches, rnd)
-            pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
+           
+        if rnd != num_rounds:
+            sfround_id = crud.choose_sfround(0, rnd)
+        else:
+            sfround_id = crud.choose_sfround(num_branches, rnd)
+        pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
 
     return redirect ('/users_choice') 
+
+@app.route('/patterns')
+def all_patterns():
+    """ View all patterns """
+
+    patterns = crud.get_patterns()
+
+    return render_template('all_patterns.html', patterns=patterns)
+
+@app.route('/patterns/<pattern_id>')
+def show_pattern(pattern_id):
+    """ Show details for a particular pattern """
+
+    pattern = crud.get_pattern_by_id(pattern_id)
+    sfrounds = crud.get_sfrounds_by_sfround_ids(pattern_id)
+    return render_template('pattern_details.html', pattern=pattern, sfrounds=sfrounds)
+
+@app.route('/user_patterns')
+def all_patterns_for_user():
+    """ View all patterns for a specific user """
+
+    user_id = session['user_id']
+    print('*****&&*****')
+    print('server: all_patterns_for_user')
+    print(f'user_id {user_id}')
+    user_patterns = crud.get_patterns_by_user_id(user_id)
+    
+    print(f'user_id {user_id}, user_patterns {user_patterns}')
+    
+    return render_template('user_patterns.html', user_patterns=user_patterns)
+
+@app.route("/completion_date.json")
+def get_completion_date():
+    """Get completion date."""
+
+    pattern_id = request.args.get("pattern_id")
+    completion_date = request.args.get("completion")
+    print('**********')
+    print(completion_date, pattern_id)
+    pattern = crud.add_completion_date_to_pattern(pattern_id, completion_date)
+    
+    return jsonify({"completion":completion_date})
+    
 
 if __name__ == '__main__':
     connect_to_db(app)

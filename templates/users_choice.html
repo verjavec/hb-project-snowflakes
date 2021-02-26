@@ -7,11 +7,12 @@
 {% block title %}Snowflake Choices{% endblock %}
 
 {% block body %}
-  
+    
     <h1>Are you ready to make a snowflake pattern, {{ session['username'] }}?</h1>
     <h2>You have some choices to make about how you'd like your snowflake to look.
         The example shows the choices and how many that the example has of each choice.
     </h2>
+    <p>User ID: {{ session['user_id'] }}</p>
     <section class="container">
         <section id="select_choices">
             <div>
@@ -57,12 +58,12 @@
                 <input type="submit">
             </form>
             <p>
-                <a href="/patterns">View all of the patterns</a>
+                <a href="/user_patterns">View all of the patterns</a>
             </p>
         </section>    
     
         <section id="choice_img">
-            <img src="/static/snowflake.png">
+            <img src="/static/images/snowflake.png">
         </section>
     </section>
     

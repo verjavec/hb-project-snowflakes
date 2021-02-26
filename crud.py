@@ -26,7 +26,7 @@ def get_users():
     return User.query.all()
 
 def get_user_by_id(user_id):
-    """ Get a user using user_id and return the user """
+    """ Return a user by id """
 
     return User.query.get(user_id)
 
@@ -114,7 +114,7 @@ def get_patterns():
     return Pattern.query.all()
 
 def get_pattern_by_id(pattern_id):
-    """ Return all of the patterns with pattern_id """
+    """ Return a pattern by id """
 
     return Pattern.query.get(pattern_id)
 
@@ -144,6 +144,8 @@ def get_sfrounds_by_pattern_id(pattern_id):
     return sfround_id_list    
 
 def get_sfrounds_by_sfround_ids(pattern_id):
+    """ Get the sfrounds for a pattern """
+
     sfrounds = []
     sfround_ids = get_sfrounds_by_pattern_id(pattern_id)
     
@@ -154,3 +156,30 @@ def get_sfrounds_by_sfround_ids(pattern_id):
         sfrounds.append(sfround)
         
     return sfrounds
+
+def get_patterns_by_user_id(user_id):
+    """ Get all of the patterns created by a specific user_id """
+    
+    print("***!!***")
+    print('get_patterns_by_user_id')
+    print(f'user_id {user_id}')
+    patterns = Pattern.query.filter(Pattern.user_id == user_id).all()
+    print(patterns)
+    return Pattern.query.filter(Pattern.user_id == user_id).all()
+
+def add_completion_date_to_pattern(pattern_id, completion_date):
+    """ Add a completion date to a pattern with given pattern_id """
+
+    print('**!!**!!**!!**')
+    print('add_completion_date_to_pattern')
+    print(pattern_id, completion_date)
+    
+    pattern = get_pattern_by_id(pattern_id)
+    
+    print(pattern)
+
+    pattern.completion_date = completion_date
+
+    db.session.commit()
+
+    return  

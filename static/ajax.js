@@ -1,37 +1,61 @@
 "use strict";
 
-// alert("js connected")
+console.log('in javascript');
 
-// function displayChoices() {
-//   evt.preventDefault(); 
-//     console.log("made it to the function")
-    
-//     // CHANGE 1 ----- Goes with Change 1 in server.py
-//     $.get("/get_choices", (res) => {
-//       console.log(res);
-//       console.log(form_data);
+// Set the default date as today
+document.querySelector("#completion_input").valueAsDate = new Date();
 
-//       $("#dis-num-rounds").text(res["num_rounds"]);
-//       $("#dis-num-branches").text(res["num_branches"]);
-//       $("#dis-num-points").text(res["num_points"]);
+// Try again using delivery time example from notes -- SUCCESS!
+$('#date-completed').on('submit', (evt) => {
+    evt.preventDefault();
+    // Get user input from a form
+    const formData = { 
+        completion: $('#completion_input').val(),
+        pattern_id: $('#patt-id').val()
+    };
     
-//     });    
+    console.log(formData);
+
+    // Send formData to the server (becomes a query string)
+    $.get('/completion_date.json', formData, (res) => {
+      // Display response from the server
+      console.log(res);
+      $('#completion-date').text(`${res.completion}`);
+
+    });
+  });
+
+
+
+// Attempt to just retrieve the variable with a click alone
+// const dateInput = document.querySelector('#date-completed');
+
+// dateInput.addEventListener('submit', (evt) => {
+//   console.log(evt);
+
+  
+//   let formData = { 'completion': $('completion-input').val() };
+//   console.log(formData)
+//   $('#date').text(formData);
+
+// });
+
+// This function should retrieve the date from the date form and display it 
+// It's currently giving an error: "GET http://localhost:8000/completion_date.json 500 (INTERNAL SERVER ERROR)"
+// function updateCompletionDate(evt) {
+//     evt.preventDefault();
+
+//     let url = "/completion_date.json";
+//     let formData = { 'completion': $('completion-input').val() };
+//     console.log(formData)
+
+//     console.log("made it to the function");
+
+//     $.get(url, (response) => {
+//         // console.log(response);
+//         $('#date').text(response);
+//     });
+
 // }
 
-// $("#get-choices").on("submit", displayChoices)
-// // end of CHANGE 1
-
-//     // CHANGE 2 ----- Goes with adding button in users_choice.html
-//     //          ----- and change 2 in server.py
-// //     $.get("/display_choices", (res) => {
-// //       console.log(res);
-
-// //       $("#dis-num-rounds").text(res["num_rounds"]);
-// //       $("#dis-num-branches").text(res["num_branches"]);
-// //       $("#dis-num-points").text(res["num_points"]);
-    
-// //     });    
-// // }
-
-// // $("#display-choices").on("click", displayChoices)
-// //end of CHANGE 2
+// $('#date-completed').on('submit', updateCompletionDate)

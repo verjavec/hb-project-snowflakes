@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
-{% block title %}All Patterns{% endblock %}
+{% block title %}{{ session['username'] }}'s Patterns{% endblock %}
 
 {% block body %}
-    <h1>All Patterns</h1>
+    <h1>All Patterns for {{ session['username'] }}</h1>
     
-        {% for pattern in patterns %}
-    <table>    
+        {% for pattern in user_patterns %}
+    <table>
+        <td>
+            User_id: {{ pattern.user_id }}</a>
+        </td>    
         <td>
             <a href = "/patterns/{{ pattern.pattern_id }}">
             Pattern_id: {{ pattern.pattern_id }}</a>
-            
-        </td>
-        <td>
-            user_id: {{ pattern.user_id }}
         </td>
         <td>
             Number of rounds: {{ pattern.num_rounds }}

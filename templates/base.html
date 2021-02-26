@@ -15,7 +15,7 @@
             crossorigin="anonymous"></script>
     {% block head %}{% endblock %}
   </head>
-  <script src="/static/ajax.js"></script>
+  
   <body>
 
     {% for msg in get_flashed_messages() %}
@@ -27,5 +27,6 @@
     {% block body %}{% endblock %}
 
     {% block after_body %}{% endblock %}
+    <script src="/static/ajax.js"></script>
   </body>
 </html>

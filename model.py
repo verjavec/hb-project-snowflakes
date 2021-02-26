@@ -33,7 +33,7 @@ class Pattern(db.Model):
                         autoincrement=True,
                         primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    completion_date = db.Column(db.DateTime)
+    completion_date = db.Column(db.Date)
     num_rounds = db.Column(db.Integer)
     num_branches = db.Column(db.Integer)
     num_points = db.Column(db.Integer)

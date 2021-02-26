@@ -3,12 +3,40 @@
 {% block title %}{{ session['username'] }} - Pattern Details{% endblock %}
 
 {% block body %}
-    <div id=pattern_id>Pattern ID {{ pattern.pattern_id }}</div>
-    <div id=num_rounds>Number of rounds {{ pattern.num_rounds }}</div>
-    <div id=num_branches>Number of branches {{ pattern.num_branches }}</div>
-    <div id=num_points>Number of points {{ pattern.num_points }}</div>
-        
-    <section id=sfrounds>
+
+    <form id="date-completed">
+        <table>
+            <tr>
+                <td>Pattern ID</td><td id="pattern-id">{{ pattern.pattern_id }}</td>
+            </tr>
+            <tr>
+                <td>Number of rounds</td><td id="num-rounds"> {{ pattern.num_rounds }}</td>
+            </tr>
+            <tr>
+                <td>Number of branches</td><td id="num-branches"> {{ pattern.num_branches }}</td>
+            </tr>
+            <tr>
+                <td>Number of points</td><td id="num-points"> {{ pattern.num_points }}</td>
+            </tr>
+            <tr>
+                <td>Date Completed</td><td id="completion-date"> {{ pattern.completion_date }} </td>
+            </tr>
+            <tr>
+                <td><input type="hidden" value="{{ pattern.pattern_id }}" id="patt-id"></td>
+            </tr>
+            <tr>
+                <td>
+                <label for="completion">If you've made this pattern, 
+                    choose the date on which it was completed:</label>
+                <input type="date" id="completion_input" name="completion">
+                </td>
+                <td><input type="submit"></td>
+            </tr>
+        </table>
+    </form>
+    
+
+    <div id="sfrounds">
         <ul>
             <li>    
                 <!-- Rnd 1 is the same for ALL patterns -->
@@ -22,6 +50,7 @@
             </li> 
             {% endfor %}
         </ul>
-    </section>
+    </div>
 
+    <!-- <script src="/static/ajax.js"></script> -->
 {% endblock %}
