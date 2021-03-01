@@ -51,7 +51,7 @@ def register_user():
 
     return redirect('/')
 
-@app.route('/', methods=['POST'])
+@app.route('/users_choice', methods=['POST'])
 def log_in():
     """Log In user."""
 
@@ -72,17 +72,17 @@ def log_in():
     else:
         flash('Incorrect password. Please try again.')
 
-    return redirect('/')
-
-@app.route('/users_choice')
-def users_choice():
-    """ Renders users_choice.html 
-    
-        This is the form that allows the user to choose num_branches, 
-        num_points and num_rounds.
-    """
-    
     return render_template('users_choice.html')
+
+# @app.route('/users_choice')
+# def users_choice():
+#     """ Renders users_choice.html 
+    
+#         This is the form that allows the user to choose num_branches, 
+#         num_points and num_rounds.
+#     """
+    
+#     return render_template('users_choice.html')
 
 @app.route('/get_choices')
 def get_choices():
