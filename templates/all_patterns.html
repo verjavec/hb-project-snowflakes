@@ -12,18 +12,17 @@
             
         </td>
         <td>
-            user_id: {{ pattern.user_id }}
-        </td>
-        <td>
             Number of rounds: {{ pattern.num_rounds }}
         </td>
-        <td>
-            Number of branches: {{ pattern.num_branches }}
-        </td>
+        
         <td>
             Number of points: {{ pattern.num_points }}
         </td>
     
+        <td>
+            Number of branches: {{ pattern.num_branches }}
+        </td>
+        
         {% endfor %}
     </table>
 {% endblock %}

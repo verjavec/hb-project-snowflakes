@@ -6,23 +6,18 @@
     
         {% for pattern in user_patterns %}
     <table>
-        <td>
-            User_id: {{ pattern.user_id }}</a>
-        </td>    
-        <td>
-            <a href = "/patterns/{{ pattern.pattern_id }}">
-            Pattern_id: {{ pattern.pattern_id }}</a>
-        </td>
+        <td id='sf_logo'><a href = "/patterns/{{ pattern.pattern_id }}">
+            <img src='/static/images/sf_logo.png'></td>
         <td>
             Number of rounds: {{ pattern.num_rounds }}
         </td>
         <td>
-            Number of branches: {{ pattern.num_branches }}
-        </td>
-        <td>
             Number of points: {{ pattern.num_points }}
         </td>
-    
+        <td>
+            Number of branches: {{ pattern.num_branches }}
+        </td>
+        
         {% endfor %}
     </table>
 {% endblock %}

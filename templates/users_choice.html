@@ -12,7 +12,7 @@
     <h2>You have some choices to make about how you'd like your snowflake to look.
         The example shows the choices and how many that the example has of each choice.
     </h2>
-    <p>User ID: {{ session['user_id'] }}</p>
+    
     <section class="container">
         <section id="select_choices">
             <div>
@@ -25,25 +25,13 @@
                     Select number of rounds:
                     </label>
                     <select id="num-rounds" name="num_rounds">
-                        <option value="">Choose the number of Rounds</option>
+                        <option value="">Choose the number of rounds</option>
                             {% for r in range(2, 5) %}
                                 <option value="{{ r }}">{{ r }}</option>
                             {% endfor %}
                     </select>
                 </div>  
-            
-                <div id="num-branches"></div>
-                    <label for="num-branches">
-                        Select number of branches:
-                    </label>
-                    <select id="num-branches" name="num_branches">
-                        <option value="">Choose the number of branches</option>
-                            {% for n in range(0, 5) %}
-                                <option value="{{ n }}">{{ n }}</option>
-                            {% endfor %}
-                    </select>
-                </div>  
-        
+       
                 <div id="num-points">
                     <label for="num-points">
                         Select number of points:
@@ -55,10 +43,28 @@
                             {% endfor %}
                     </select>
                 </div>  
-                <input type="submit">
+
+                <div id="num-branches">
+                    <label for="num-branches">
+                        Select number of branches:
+                    </label>
+                    <select id="num-branches" name="num_branches">
+                        <option value="">Choose the number of branches</option>
+                            {% for n in range(0, 5) %}
+                                <option value="{{ n }}">{{ n }}</option>
+                            {% endfor %}
+                    </select>
+                </div>
+                  
+                <div>
+                    <input type="submit">
+                </div>
             </form>
             <p>
-                <a href="/user_patterns">View all of the patterns</a>
+                <a href="/user_patterns">View all of your patterns</a>
+            </p>
+            <p>
+                <a href="/logout">Logout</a>
             </p>
         </section>    
     

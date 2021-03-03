@@ -51,7 +51,7 @@ def register_user():
 
     return redirect('/')
 
-@app.route('/users_choice', methods=['POST'])
+@app.route('/', methods=['POST'])
 def log_in():
     """Log In user."""
 
@@ -72,17 +72,37 @@ def log_in():
     else:
         flash('Incorrect password. Please try again.')
 
-    return render_template('users_choice.html')
+    return redirect('/')
 
-# @app.route('/users_choice')
-# def users_choice():
-#     """ Renders users_choice.html 
+@app.route('/users_choice')
+def users_choice():
+    """ Renders users_choice.html 
     
-#         This is the form that allows the user to choose num_branches, 
-#         num_points and num_rounds.
-#     """
-    
-#     return render_template('users_choice.html')
+        This is the form that allows the user to choose num_branches, 
+        num_points and num_rounds. Only display if there is a user logged in.
+    """
+    if session['username'] == None:
+        flash("Please log in")
+        return redirect('/')
+    else: 
+        return render_template('users_choice.html')
+
+@app.route('/logout')
+def log_out():
+    """Log Out user."""
+
+    user = session['username']
+
+    if user is None:
+        flash('Log in first.')
+    else:
+        # Reset username & user_id
+        session['username'] = None
+        session['user_id'] = None
+        
+        flash(f'You have been successfully logged out.')
+  
+    return redirect('/')
 
 @app.route('/get_choices')
 def get_choices():
@@ -97,8 +117,6 @@ def get_choices():
     num_points = int(request.args.get('num_points'))
 
     pattern = crud.create_pattern(num_rounds, num_branches, num_points)
-    # print('***!!!**app route get choices after pattern creation **!!!***')
-    # print(pattern)
 
     # This for loop will call the crud functions that generate the random
     # rounds. Round 1 is always "ch6 to form a loop". The final round is the only 
@@ -112,7 +130,9 @@ def get_choices():
             sfround_id = crud.choose_sfround(num_branches, rnd)
         pattern_round = crud.create_pattern_round(pattern.pattern_id, sfround_id)
 
-    return redirect ('/users_choice') 
+        pattern_id = pattern.pattern_id
+         
+    return redirect(f'/patterns/{pattern_id}')
 
 @app.route('/patterns')
 def all_patterns():
@@ -135,12 +155,7 @@ def all_patterns_for_user():
     """ View all patterns for a specific user """
 
     user_id = session['user_id']
-    print('*****&&*****')
-    print('server: all_patterns_for_user')
-    print(f'user_id {user_id}')
     user_patterns = crud.get_patterns_by_user_id(user_id)
-    
-    print(f'user_id {user_id}, user_patterns {user_patterns}')
     
     return render_template('user_patterns.html', user_patterns=user_patterns)
 
@@ -150,12 +165,18 @@ def get_completion_date():
 
     pattern_id = request.args.get("pattern_id")
     completion_date = request.args.get("completion")
-    print('**********')
-    print(completion_date, pattern_id)
     pattern = crud.add_completion_date_to_pattern(pattern_id, completion_date)
     
     return jsonify({"completion":completion_date})
-    
+
+@app.route("/deletion")
+def delete_pattern():
+    """ Delete a pattern """
+
+    pattern_id = request.args.get("pattern_id")
+    pattern = crud.delete_pattern_with_pattern_id(pattern_id)
+
+    return jsonify({"pattern_id":"Deleted"})    
 
 if __name__ == '__main__':
     connect_to_db(app)
