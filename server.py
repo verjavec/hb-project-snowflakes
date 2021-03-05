@@ -4,6 +4,8 @@ from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify)
 from model import connect_to_db
 import crud
+import os
+import sys
 
 from jinja2 import StrictUndefined
 
@@ -11,6 +13,9 @@ app = Flask(__name__)
 
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
+
+API_KEY = os.environ.get('api_key')
+API_SECRET = os.environ.get('api_secret')
 
 
 @app.route('/')
@@ -176,7 +181,21 @@ def delete_pattern():
     pattern_id = request.args.get("pattern_id")
     pattern = crud.delete_pattern_with_pattern_id(pattern_id)
 
-    return jsonify({"pattern_id":"Deleted"})    
+    return jsonify({"pattern_id":"Deleted"})  
+
+@app.route("/add_photo")
+def add_photo():
+    """ Add a photo to the pattern """
+    
+    pattern_id = request.args.get("pattern_id")
+    image_url = request.args.get("image_url")
+    image_public_id = request.args.get("image_public_id")
+    image_format = request.args.get("image_format")
+    
+    resized_image_url = "https://res.cloudinary.com/dbjwx7sg5/image/upload/w_400,h_400/"+image_public_id+"."+image_format
+    pattern = crud.add_photo_to_pattern(pattern_id, resized_image_url)
+
+    return jsonify({"image_url":resized_image_url})
 
 if __name__ == '__main__':
     connect_to_db(app)

@@ -59,13 +59,8 @@ def create_pattern(num_rounds, num_branches, num_points):
     """Create and return a new pattern."""
 
     user_id = session['user_id']
-    # user_id = 1  # FOR INITIAL TESTING
-    
     pattern = Pattern(user_id=user_id, num_rounds=num_rounds, num_branches=num_branches, num_points=num_points)
-    # print('**********')
-    # print(f'num_rounds {num_rounds}, num_branches {num_branches}, num_points {num_points}')
-    # print(pattern)
-   
+
     db.session.add(pattern)
     db.session.commit()
 
@@ -86,14 +81,10 @@ def choose_sfround(num_branches, sfround_no):
 
      """
 
-    # print('***!!choose_sfround!!***')
-    # print(num_branches, sfround_no)
-
     avail_sfrounds = get_all_sfrounds_with_sfround_no_and_num_branches(num_branches, sfround_no)
 
     sfround = random.choice(avail_sfrounds)
     sfround_id = sfround.sfround_id
-    # print(avail_sfrounds)
 
     return sfround_id
 
@@ -135,11 +126,7 @@ def get_sfrounds_by_pattern_id(pattern_id):
     
     for pattern_round in pattern_rounds:
         sfround_id = pattern_round.sfround_id
-        # print('*****************')
-        # print(sfround_id)
         sfround_id_list.append(sfround_id)
-        # print('!!!!!!!!!!!!!!!')
-        # print(sfround_id_list)
     
     return sfround_id_list    
 
@@ -151,8 +138,6 @@ def get_sfrounds_by_sfround_ids(pattern_id):
     
     for sfround_id in sfround_ids:
         sfround = Sfround.query.get(sfround_id)
-        # print('**********')
-        # print(sfround)
         sfrounds.append(sfround)
         
     return sfrounds
@@ -160,21 +145,15 @@ def get_sfrounds_by_sfround_ids(pattern_id):
 def get_patterns_by_user_id(user_id):
     """ Get all of the patterns created by a specific user_id """
     
-    # print("***!!***")
-    # print('get_patterns_by_user_id')
-    # print(f'user_id {user_id}')
     patterns = Pattern.query.filter(Pattern.user_id == user_id).all()
-    # print(patterns)
+
     return Pattern.query.filter(Pattern.user_id == user_id).all()
 
 def add_completion_date_to_pattern(pattern_id, completion_date):
     """ Add a completion date to a pattern with given pattern_id """
 
-    
     completion_date = completion_date[:10]
-    
     pattern = get_pattern_by_id(pattern_id)
-    
     pattern.completion_date = completion_date
 
     db.session.commit()
@@ -186,12 +165,19 @@ def delete_pattern_with_pattern_id(pattern_id):
 
     patterns_rounds = get_pattern_round_by_pattern_id(pattern_id)
     for pattern_round in patterns_rounds:
-        print('**&&!!&&**')
-        print('delete pattern')
-        print(pattern_round)
         pattern_round_id = pattern_round.pattern_round_id
         Pattern_round.query.filter(Pattern_round.pattern_round_id == pattern_round_id).delete()
     Pattern.query.filter(Pattern.pattern_id == pattern_id).delete()
+
+    db.session.commit()
+
+    return
+
+def add_photo_to_pattern(pattern_id, image_url):
+    """ Add a completion date to a pattern with given pattern_id """
+
+    pattern = get_pattern_by_id(pattern_id)
+    pattern.image_url = image_url
 
     db.session.commit()
 

@@ -140,11 +140,11 @@
         "end_seq": "join with sl st to 1st sc"
     },
     {
-        "sfround_no": ,
-        "seq_num_branches": ,
+        "sfround_no": 3,
+        "seq_num_branches": 3,
         "beg_seq": "",
-        "sequence": "  ",
-        "end_seq": ""
+        "sequence": "hdc in next st (ch 2 if not a repeat), ch 12, sc in 2nd ch from hook, sl st in next 5 chs, ch 7, sc in 2nd ch from hook, sl st in next 4 chs, ch 6, sc in 2nd ch from hook, sl st in next 3 chs, ch 5, (dc, ch 3, sl st) in 4th ch from hook, sl st in next ch, ch 5, sc in 2nd ch from hook, sl st in next 3 chs and in remaining ch of previous ch 6, ch 6, sc in 2nd ch from hook, sl st in next 4 chs and in remaining ch of previous ch 7, ch 7, sc in 2nd ch from hook, sl st in next 5 chs and in remaining 5 chs of previous ch 12, hdc in same st as joining, ch 9, sc in 5th ch from hook, ch 5, (sl st, ch 4, sl st) in top of sc just made, sl st in next 2 chs, ch 2, skip next st",
+        "end_seq": "join with sl st to first hdc"
     },
     {
         "sfround_no": 3,

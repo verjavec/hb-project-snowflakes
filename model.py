@@ -37,6 +37,7 @@ class Pattern(db.Model):
     num_rounds = db.Column(db.Integer)
     num_branches = db.Column(db.Integer)
     num_points = db.Column(db.Integer)
+    image_url = db.Column(db.String)
     
     user = db.relationship('User', backref='patterns')
 
