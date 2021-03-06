@@ -3,25 +3,25 @@
 // Set the default date as today
 document.querySelector("#completion-input").valueAsDate = new Date();
 
-// Get number of rounds, points and branches for the pattern_id
+// Choose a completion date
 $('#date-completed').on('submit', (evt) => {
-    evt.preventDefault();
+  evt.preventDefault();
+
     // Get user input from a form
     const formData = { 
-        completion: $('#completion-input').val(),
-        pattern_id: $('#patt-id').val()
-    };
-    
-    // console.log(formData);
+      completion: $('#completion-input').val(),
+      pattern_id: $('#patt-id').val()
 
-    // Send formData to the server (becomes a query string)
+    };
+      // console.log(formData);
+
+      // Send formData to the server (becomes a query string)
     $.get('/completion_date.json', formData, (res) => {
       // Display response from the server
       // console.log(res);
       $('#completion-date').text(`${res.completion}`);
-
     });
-  });
+});
 
 // Delete a pattern
   $('#delete-pattern').on('click', (evt) => {

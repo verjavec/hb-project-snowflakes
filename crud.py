@@ -59,7 +59,10 @@ def create_pattern(num_rounds, num_branches, num_points):
     """Create and return a new pattern."""
 
     user_id = session['user_id']
-    pattern = Pattern(user_id=user_id, num_rounds=num_rounds, num_branches=num_branches, num_points=num_points)
+    image_url = "/static/images/default_image.png"
+    pattern = Pattern(user_id=user_id, num_rounds=num_rounds, 
+                    num_branches=num_branches, num_points=num_points, 
+                    image_url=image_url)
 
     db.session.add(pattern)
     db.session.commit()
@@ -145,9 +148,8 @@ def get_sfrounds_by_sfround_ids(pattern_id):
 def get_patterns_by_user_id(user_id):
     """ Get all of the patterns created by a specific user_id """
     
-    patterns = Pattern.query.filter(Pattern.user_id == user_id).all()
-
-    return Pattern.query.filter(Pattern.user_id == user_id).all()
+    # return Pattern.query.filter(Pattern.user_id == user_id).all()
+    return Pattern.query.filter(Pattern.user_id == user_id).order_by(Pattern.pattern_id).all()
 
 def add_completion_date_to_pattern(pattern_id, completion_date):
     """ Add a completion date to a pattern with given pattern_id """
