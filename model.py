@@ -63,7 +63,7 @@ class Sfround(db.Model):
     # patterns_rounds = a list of patterns_rounds objects
 
     def __repr__(self):
-        return f'<Sfround sfround_id={self.sfround_id} beg_seq={self.beg_seq} end_seq={self.end_seq} seq_mum_branches={self.seq_num_branches}>'
+        return f'<Sfround sfround_id={self.sfround_id} beg_seq={self.beg_seq} end_seq={self.end_seq} seq_num_branches={self.seq_num_branches}>'
 
 class Pattern_round(db.Model):
     """An associative table to connect sfrounds and patterns."""

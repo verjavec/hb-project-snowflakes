@@ -1,29 +1,29 @@
 {% extends 'base.html' %}
-    <script src="/static/ajax.js"></script>
-
+    
     <script src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous"></script>
+
 {% block title %}Snowflake Choices{% endblock %}
 
 {% block body %}
     
     <h1>Are you ready to make a snowflake pattern, {{ session['username'] }}?</h1>
-    <h2>You have some choices to make about how you'd like your snowflake to look.
+    <h5>You have some choices to make about how you'd like your snowflake to look.
         The example shows the choices and how many that the example has of each choice.
-    </h2>
+    </h5>
     
     <section class="container">
         <section id="select_choices">
             <div>
-                <h3>Select Choices</h3>
+                <h6>Select Choices</h6>
             </div>
             
             <form id="get-choices" action='/get_choices'>
                 <div id='num-rounds'>
-                    <label for="num-rounds">
+                    <!-- <label for="num-rounds">
                     Select number of rounds:
-                    </label>
+                    </label> -->
                     <select id="num-rounds" name="num_rounds">
                         <option value="">Choose the number of rounds</option>
                             {% for r in range(2, 5) %}
@@ -33,9 +33,9 @@
                 </div>  
        
                 <div id="num-points">
-                    <label for="num-points">
+                    <!-- <label for="num-points">
                         Select number of points:
-                    </label>
+                    </label> -->
                     <select id="num-points" name="num_points">
                         <option value="">Choose the number of points</option>
                             {% for p in range(5, 9) %}
@@ -45,9 +45,9 @@
                 </div>  
 
                 <div id="num-branches">
-                    <label for="num-branches">
+                    <!-- <label for="num-branches">
                         Select number of branches:
-                    </label>
+                    </label> -->
                     <select id="num-branches" name="num_branches">
                         <option value="">Choose the number of branches</option>
                             {% for n in range(0, 5) %}
@@ -73,21 +73,7 @@
         </section>
     </section>
     
-    <!-- <section id="display-choices">
-        <h3>Choice Info</h3>
-
-    <dl>
-      <dt>Number of Rounds</dt>
-      <dd id="dis-num-rounds">Unknown</dd>
-
-      <dt>Number of Points</dt>
-      <dd id="dis-num-points">Unknown</dd>
-
-      <dt>Number of Branches</dt>
-      <dd id="dis-num-branches">Unknown</dd>
-    </dl>
-    -->
-    
+    <script src="/static/ajax.js"></script>
         
 {% endblock %}
 

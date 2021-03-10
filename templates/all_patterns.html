@@ -2,27 +2,41 @@
 {% block title %}All Patterns{% endblock %}
 
 {% block body %}
+
     <h1>All Patterns</h1>
+    <div class="row">
+        <div class="col-3">
+            Pattern ID
+        </div>
+        <div class="col-3">
+            Number of Rounds
+        </div>
+        <div class="col-3">
+            Number of Points
+        </div>
+        <div class="col-3">
+            Number of Branches
+        </div>    
+    </div>
     
         {% for pattern in patterns %}
-    <table>    
-        <td>
+    <div class="row">
+        <div class="col-3">
             <a href = "/patterns/{{ pattern.pattern_id }}">
             Pattern_id: {{ pattern.pattern_id }}</a>
-            
-        </td>
-        <td>
+        </div>
+        <div class="col-3">
             Number of rounds: {{ pattern.num_rounds }}
-        </td>
-        
-        <td>
+        </div>
+        <div class="col-3">
             Number of points: {{ pattern.num_points }}
-        </td>
-    
-        <td>
+        </div>
+        <div class="col-3">
             Number of branches: {{ pattern.num_branches }}
-        </td>
+        </div>
+    </div>    
+            {% endfor %}
         
-        {% endfor %}
-    </table>
+        
+    
 {% endblock %}

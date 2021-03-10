@@ -83,12 +83,10 @@ def choose_sfround(num_branches, sfround_no):
         for that round.
 
      """
-
     avail_sfrounds = get_all_sfrounds_with_sfround_no_and_num_branches(num_branches, sfround_no)
-
     sfround = random.choice(avail_sfrounds)
     sfround_id = sfround.sfround_id
-
+    
     return sfround_id
 
 def get_all_sfrounds_with_sfround_no_and_num_branches(num_branches, sfround_no):
@@ -146,7 +144,11 @@ def get_sfrounds_by_sfround_ids(pattern_id):
     return sfrounds
 
 def get_patterns_by_user_id(user_id):
-    """ Get all of the patterns created by a specific user_id """
+    """ Get all of the patterns created by a specific user_id 
+    
+        These will be listed in order of creation since they are listed
+        by pattern_id.
+    """
     
     # return Pattern.query.filter(Pattern.user_id == user_id).all()
     return Pattern.query.filter(Pattern.user_id == user_id).order_by(Pattern.pattern_id).all()
@@ -161,6 +163,17 @@ def add_completion_date_to_pattern(pattern_id, completion_date):
     db.session.commit()
 
     return  
+
+def get_patterns_by_user_id_sort_by_completion_date(user_id):
+    """ Get all of the patterns created by a specific user_id 
+    
+        These will be listed in order of completion date, if they have one.
+    """
+    
+    # return Pattern.query.filter(Pattern.user_id == user_id).all()
+    return Pattern.query.filter((Pattern.user_id == user_id)
+            & (Pattern.completion_date.isnot(None))).order_by(Pattern.completion_date)
+
 
 def delete_pattern_with_pattern_id(pattern_id):
     """ Delete the pattern with pattern_id """
