@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <!-- Required meta tags -->
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
@@ -14,11 +14,13 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" 
         crossorigin="anonymous">
 
+    <!-- My CSS -->
     <link rel="stylesheet" href="/static/css/styles.css">
 
+    <!--  jquery needs this
     <script src="https://code.jquery.com/jquery-3.5.1.js"
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script> -->
 
     
 
@@ -26,6 +28,49 @@
   </head>
   
   <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-light navbar-expand-sm fixed-top navbar-color">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+          <a class="navbar-brand" href="#">
+            <img src="/static/images/sf_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Snow Day
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        {% if session['username'] %}
+          <li class="nav-item active">
+            <a class="nav-link login_activated" href="/users_choice">Generate Patterns</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link login_activated" href="/user_patterns">View Your Patterns</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link login_activated" href="/logout">Logout</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Generate Patterns</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">View Your Patterns</a>
+          </li>
+        {% endif %}    
+        <!-- Want the login submit button to change the status of the navbar -->
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled login_activated" href="/users_choice">Generate Patterns</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled login_activated" href="/user_patterns">View Your Patterns</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled login_activated" href="/logout">Logout</a>
+        </li> -->
+      </ul>
+    </nav>
       <div class="container">
           {% for msg in get_flashed_messages() %}
           <p class="flash-msg">
@@ -35,13 +80,16 @@
           
           {% block body %}{% endblock %}
 
+          <!-- Cloudinary -->
           <script src="https://widget.cloudinary.com/v2.0/global/all.js" 
               type="text/javascript"></script>  
 
+          <!-- jquery -->
           <script src="https://code.jquery.com/jquery-3.5.1.js"
               integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
               crossorigin="anonymous"></script>
-            
+          
+          <!-- Bootstrap -->    
           <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
               integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
               crossorigin="anonymous"></script>
@@ -50,6 +98,7 @@
               integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" 
               crossorigin="anonymous"></script>
 
+          <!-- My javascript -->    
           <script src="/static/js/ajax.js"></script>
       </div>    
   </body>

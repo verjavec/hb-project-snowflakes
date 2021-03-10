@@ -3,22 +3,16 @@
 
 {% block body %}
     <div class="d-flex flex-column">
-
+      
       <div><h1>Snow Day!</h1></div>
-      <div><h5> Where you get to design snowflake patterns to crochet.</h5></div>
-      <div></div><h5> Create your own snow day - any day of the year.</h5></div>      
+      <div><h5> Design snowflake patterns to crochet</h5></div>
+      <div></div><h5>and create your own snow day - any day of the year.</h5></div>      
     </div> 
-      <h6>Navigation</h6>
-      <ul>
-        <li><a href="/users_choice">Choose your pattern options</a></li>
-        <li><a href="/users">View all users -- TESTING ONLY</a></li>
-        <li><a href="/patterns">View all of the patterns -- TESTING ONLY</a></li>
-      </ul>
          
     <div class="d-flex flex-row justify-content-around">
-      <div class="d-inline-flex flex-column justify-content-start homepage">
+      <div class="d-inline-flex flex-column align-items-end homepage">
         <form action="/users" method="POST">
-          <div><h2>Create an Account</h2></div>
+          <div><h2 class="homepage_text">Create an Account</h2></div>
           <div><p>
             Name <input type="text" name="name">
           </p></div>
@@ -35,9 +29,10 @@
         </form>
       </div>
 
-      <div class="d-inline-flex flex-column justify-content-start login">
+      <div class="d-inline-flex flex-column align-items-end login">
         <form action="/" method="POST">
-          <div><h2>Please log in</h2></div>
+          <div><h2 class="homepage_text">Log in</h2></div>
+          
           <div><p>
             Email <input type="text" name="email">
           </p></div>
@@ -45,11 +40,21 @@
           <div><p>
             Password <input type="password" name="password">
           </p></div>
-
+          
           <div><p>
-            <input type="submit">
+            <input type="submit" id="login_button">
           </p></div>
+          </div>    
         </form>
       </div>
     </div>
+
+          <h6>Navigation</h6>
+      <ul>
+        <li><a href="/users_choice">Choose your pattern options</a></li>
+        <li><a href="/users">View all users -- TESTING ONLY</a></li>
+        <li><a href="/patterns">View all of the patterns -- TESTING ONLY</a></li>
+      </ul>
+
+
 {% endblock %}

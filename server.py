@@ -21,7 +21,6 @@ app.jinja_env.undefined = StrictUndefined
 API_KEY = os.environ.get('api_key')
 API_SECRET = os.environ.get('api_secret')
 
-
 @app.route('/')
 def homepage():
     """ View homepage """
@@ -66,9 +65,10 @@ def log_in():
 
     email_entered = request.form.get('email')
     password_entered = request.form.get('password')
+    print('***Login***')
     
     user = crud.get_user_by_email(email_entered)
-
+    print(user)
     if user is None:
         flash('This email address is not associated with an account. Please try again.')
     elif password_entered == user.password:
@@ -189,15 +189,17 @@ def delete_pattern():
 
 @app.route("/add_photo")
 def add_photo():
-    """ Add a photo to the pattern """
+    """ Add a photo to the pattern 
+    
+    The URL to be added to the pattern is size formatted through the 
+    cloudinary URL functions before being added to the database.
+    """
     
     pattern_id = request.args.get("pattern_id")
     image_url = request.args.get("image_url")
-    print('***ADD PHOTO***')
-    print(image_url)
     image_public_id = request.args.get("image_public_id")
     image_format = request.args.get("image_format")
-    
+
     resized_image_url = "https://res.cloudinary.com/dbjwx7sg5/image/upload/w_400,h_400/"+image_public_id+"."+image_format
     pattern = crud.add_photo_to_pattern(pattern_id, resized_image_url)
 

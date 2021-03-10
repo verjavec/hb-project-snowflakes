@@ -64,3 +64,13 @@ document.getElementById("upload-photo").addEventListener("click", function(){
   myWidget.open();
 }, false);
 
+  // Change navbar buttons after logging in
+  // $('#login_button').on('click', (evt) => {
+  //   evt.preventDefault();
+
+  //   console.log("login button pressed");
+
+  //   $('.login_activated').removeClass('disabled').addClass('active');
+  // });  
+
+
