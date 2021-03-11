@@ -4,6 +4,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding-top: 65px;
+	color: #303b5b;
 }
 
 .container {
@@ -14,6 +15,7 @@ body {
 
 .navbar-color {
 	background-color: #dee8f2;
+	color: #303b5b;
 }
 
 .homepage {
@@ -26,14 +28,6 @@ body {
 
 .homepage_text {
 	text-align: center;
-}
-
-.login {
-	background-color: #dee8f2;
-	border-radius: 50px;
-	text-align: right;
-	padding: 25px;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 input[type=submit] {
@@ -66,4 +60,20 @@ h3 {
 	height: 25px;
 }
 
+#list {
+	background-color: #dee8f2;
+	border-radius: 50px;
+	text-align: center;
+	padding: 25px;
+	width: max-content; 
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	margin: 0 auto;
+}
 
+#sf-col {
+	padding: 0px;
+}
+
+.pattern_list {
+	padding: 10px;
+}

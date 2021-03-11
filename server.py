@@ -218,7 +218,7 @@ def sort_by_completion():
     patterns = crud.get_patterns_by_user_id_sort_by_completion_date(user_id)
     print("***** SERVER.PY  sort by completion")
     print(f'patterns: {patterns}')
-    return render_template('user_patterns_sorted.html', patterns=patterns)
+    return render_template('user_patterns.html', user_patterns=patterns)
 
 if __name__ == '__main__':
     connect_to_db(app)
