@@ -4,12 +4,12 @@
 {% block body %}
     <h1>All Patterns for {{ session['username'] }}</h1>
     
-    <div id="list">
+    <div id="list" class="box">
         {% for pattern in user_patterns %}
         <div class="row">
             <div class="d-inline-flex" id="sf_col">
                 <a href = "/patterns/{{ pattern.pattern_id }}">
-                <img id="sf_logo.png" src='/static/images/sf_logo.png'></a>
+                <img src='/static/images/sf_logo.png'></a>
             </div>
             <div class="d-inline-flex align-self-center pattern_list">
                 Number of rounds: {{ pattern.num_rounds }}

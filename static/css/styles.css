@@ -14,15 +14,23 @@ body {
 }
 
 .navbar-color {
-	background-color: #dee8f2;
+	background-color: #d4e8fd;
+}
+
+#nav-text {
 	color: #303b5b;
 }
 
-.homepage {
-	background-color: #dee8f2;
+#nav-text li a {
+	color: #303b5b;
+}
+
+.box {
+	background-color: #d4e8fd;
 	border-radius: 50px;
 	text-align: right;
 	padding: 25px;
+	opacity: .8;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -35,12 +43,12 @@ input[type=submit] {
   }
 
 #select_choices {
-	width: 50%;
-    float: left;
+	text-align: left;
 }
 
 #choice_img {
-	margin-left: 50%;
+	margin-right: 1%;
+	text-align: center;
 }
 
 dt {
@@ -55,19 +63,9 @@ h3 {
 	font-size: 1.4em;
 }
 
-#sf_logo {
-	width: 25px;
-	height: 25px;
-}
-
 #list {
-	background-color: #dee8f2;
-	border-radius: 50px;
-	text-align: center;
-	padding: 25px;
-	width: max-content; 
-	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	margin: 0 auto;
+	width: max-content; 
 }
 
 #sf-col {
