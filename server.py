@@ -24,6 +24,9 @@ API_SECRET = os.environ.get('api_secret')
 @app.route('/')
 def homepage():
     """ View homepage """
+    if session == {}:
+        username=None
+        session['username'] = username
 
     return render_template('homepage.html')
 
