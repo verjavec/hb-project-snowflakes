@@ -203,7 +203,7 @@ def add_photo():
     image_public_id = request.args.get("image_public_id")
     image_format = request.args.get("image_format")
 
-    resized_image_url = "https://res.cloudinary.com/dbjwx7sg5/image/upload/w_400,h_400/"+image_public_id+"."+image_format
+    resized_image_url = "https://res.cloudinary.com/dbjwx7sg5/image/upload/w_400,c_scale/"+image_public_id+"."+image_format
     pattern = crud.add_photo_to_pattern(pattern_id, resized_image_url)
 
     return jsonify({"image_url":resized_image_url})
@@ -216,8 +216,7 @@ def sort_by_completion():
     """
     user_id = session['user_id']
     patterns = crud.get_patterns_by_user_id_sort_by_completion_date(user_id)
-    print("***** SERVER.PY  sort by completion")
-    print(f'patterns: {patterns}')
+    
     return render_template('user_patterns.html', user_patterns=patterns)
 
 if __name__ == '__main__':

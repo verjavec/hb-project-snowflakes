@@ -3,61 +3,7 @@
 {% block title %}{{ session['username'] }} - Pattern Details{% endblock %}
 
 {% block body %}
-    <div id="printed-pattern">
-    <form id="date-completed">
-        <table>
-            
-            <tr>
-                <td>Number of rounds</td><td id="num-rounds"> {{ pattern.num_rounds }}</td>
-            </tr>
-            <tr>
-                <td>Number of points</td><td id="num-points"> {{ pattern.num_points }}</td>
-            </tr>
-            <tr>
-                <td>Number of branches</td><td id="num-branches"> {{ pattern.num_branches }}</td>
-            </tr>
-            <tr>
-                <td>Date Completed</td>
-                <td id="completion-date"> {% if pattern.completion_date != None %}
-                                        {{ pattern.completion_date.strftime('%m-%d-%Y') }}
-                                            {% else %}
-                                        {{ pattern.completion_date }}
-                                            {% endif %} 
-                </td>
-            </tr>
-            <tr>
-                <td><input type="hidden" value="{{ pattern.pattern_id }}" id="patt-id"></td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="completion">Enter date when completed:</label><br>
-                    <input type="date" id="completion-input" name="completion">
-                    <input type="submit">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button id="delete-pattern" name="delete">Delete this pattern</button>
-                </td>
-                <td>
-                    <button id="upload-photo">Upload photo</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                    <img id="photo" src="{{ pattern.image_url }}"></img>
-                </td>
-            </tr>
-    
-        </table>
-    
-    
-    </form>
-    
-
-    <div id="sfrounds">
+    <div class="box" id="sfrounds">
         <ul>
             <li>    
                 <!-- Rnd 1 is the same for ALL patterns -->
@@ -72,10 +18,78 @@
             {% endfor %}
         </ul>
     </div>
+
+
+    <div class="box" id="printed-pattern">
+        <form id="date-completed">
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="row justify-content-around">    
+                        <div class="col-6 text-right">Number of rounds</div>
+                        <div class="col-4 text-left" id="num-rounds">{{ pattern.num_rounds }}</div>
+                    </div>
+
+                    <div class="row justify-content-around"> 
+                        <div class="col-6 text-right">Number of points</div>
+                        <div class="col-4 text-left" id="num-points">{{ pattern.num_points }}</div>
+                    </div>
+                        
+                    <div class="row justify-content-around">
+                        <div class="col-6 text-right">Number of branches</div>
+                        <div class="col-4 text-left" id="num-branches">{{ pattern.num_branches }}</div>
+                    </div>
+
+                    <div class="row justify-content-around">
+                        <div class="col-6 text-right">Date Completed</div>
+                        <div class="col-4 text-left" id="completion-date"> 
+                            {% if pattern.completion_date != None %}
+                                {{ pattern.completion_date.strftime('%m-%d-%Y') }}
+                            {% else %}
+                                {{ pattern.completion_date }}
+                            {% endif %} 
+                        </div>
+                    </div>    
+
+                        <!-- This is here to pass the pattern id
+                             into the crud functions that need it to update the image and to delete -->
+                        <div class="row" style="margin: 25px;"><input type="hidden" value="{{ pattern.pattern_id }}" id="patt-id"></div>
+                        
+                    <div class="row justify-content-around">
+                        <div class="col-8 text-center align-self-center">
+                            <label for="completion">Enter date when completed:
+                            <input type="date" id="completion-input" name="completion"></label>
+                        </div>
+                        <div class="col-4 align-self-center">
+                            <input type="submit">
+                        </div>
+                    </div>    
+                    <div class="row mt-2"></div>
+                    <div class="row mt-2"></div>
+                    <div class="row mt-2"></div>
+                    <div class="row mt-2"></div>
+                    <div class="row mt-2"></div>
+                    <div class="row justify-content-around">
+                        <div class="flex-grow-1">
+                            <button id="delete-pattern" name="delete">Delete this pattern</button>
+                        </div>
+                        <div class="flex-grow-1">
+                            <button id="upload-photo">Upload photo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="flex-row justify-content-center">
+                        <div class="col-6">
+                            <img src="{{ pattern.image_url }}" class="img-fluid" id="photo" alt="snowflake">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
     
-</div>
+
+
     
-    <p><a href='/users_choice'>Generate another pattern</a></p>
-    <p><a href="/user_patterns">View all of your patterns</a></p>
-    
+     
 {% endblock %}

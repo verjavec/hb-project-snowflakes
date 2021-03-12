@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
     
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"
-            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-            crossorigin="anonymous"></script> -->
 
 {% block title %}Snowflake Choices{% endblock %}
 
@@ -14,12 +11,12 @@
     </h5>
     
     <div class="box">
-        <div class="d-inline-flex flex-row justify-content-around" id="select_choices">
-            <div class="col-3">
+        <div class="d-inline-flex flex-row justify-content-left" id="select_choices">
+            <div class="flex-grow-1">
                 
                 <form id="get-choices" action='/get_choices'>
                     <h6>Select Choices</h6>
-                    <div id='num-rounds'>
+                    <div class="select-choices" id='num-rounds'>
                         <select id="num-rounds" name="num_rounds">
                             <option value="">Choose the number of rounds</option>
                                 {% for r in range(2, 5) %}
@@ -28,7 +25,7 @@
                         </select>
                     </div>  
         
-                    <div id="num-points">
+                    <div class="select-choices" id="num-points">
                         <select id="num-points" name="num_points">
                             <option value="">Choose the number of points</option>
                                 {% for p in range(5, 9) %}
@@ -37,7 +34,7 @@
                         </select>
                     </div>  
 
-                    <div id="num-branches">
+                    <div class="select-choices" id="num-branches">
                         <select id="num-branches" name="num_branches">
                             <option value="">Choose the number of branches</option>
                                 {% for n in range(0, 5) %}
@@ -55,12 +52,12 @@
             
     
             <div class="flex-grow-1" id="choice_img">
-                <img src="/static/images/snowflake.png">
+                <img class="img-fluid" src="/static/images/snowflake.png">
             </div>
         </div>
     </div>
     
-    <script src="/static/ajax.js"></script>
+
         
 {% endblock %}
 

@@ -31,6 +31,7 @@ body {
 	text-align: right;
 	padding: 25px;
 	opacity: .8;
+	margin-top: 50px;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -40,7 +41,7 @@ body {
 
 input[type=submit] {
 	background-color: #c0cff2;
-  }
+}
 
 #select_choices {
 	text-align: left;
@@ -49,6 +50,12 @@ input[type=submit] {
 #choice_img {
 	margin-right: 1%;
 	text-align: center;
+}
+
+#sfrounds {
+	margin-top: 50px;
+	text-align: left;
+	font-size: 2rem;
 }
 
 dt {
@@ -66,6 +73,7 @@ h3 {
 #list {
 	margin: 0 auto;
 	width: max-content; 
+	margin-top: 50px;
 }
 
 #sf-col {
@@ -75,3 +83,14 @@ h3 {
 .pattern_list {
 	padding: 10px;
 }
+
+.image-parent {
+	background-color: #c0cff2;
+	max-width: 400px;
+  	min-height: 400px;
+}
+
+button {
+	background-color: #c0cff2;
+}
+
