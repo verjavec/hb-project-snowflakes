@@ -43,15 +43,6 @@ input[type=submit] {
 	background-color: #c0cff2;
 }
 
-#select_choices {
-	text-align: left;
-}
-
-#choice_img {
-	margin-right: 1%;
-	text-align: center;
-}
-
 #sfrounds {
 	margin-top: 50px;
 	text-align: left;
@@ -84,13 +75,9 @@ h3 {
 	padding: 10px;
 }
 
-.image-parent {
-	background-color: #c0cff2;
-	max-width: 400px;
-  	min-height: 400px;
-}
-
 button {
 	background-color: #c0cff2;
 }
+
+
 

@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="box" id="sfrounds">
-        <ul>
+        <ul id="patt">
             <li>    
                 <!-- Rnd 1 is the same for ALL patterns -->
                 Rnd 1: ch 6, sl st to first chain to form a loop
@@ -78,9 +78,13 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="flex-row justify-content-center">
-                        <div class="col-6">
-                            <img src="{{ pattern.image_url }}" class="img-fluid" id="photo" alt="snowflake">
+                    <div class="flex-row">
+                        <div class="col-6 ml-auto">
+                            {% if pattern.image_url != "None" %}
+                                <img src="{{ pattern.image_url }}" class="img-fluid" id="photo" alt="user snowflake">
+                            {% else %}
+                            <img src="{{ pattern.image_url }}" class="img-fluid" id="photo" style="visibility: hidden" alt="user snowflake">
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -24,27 +24,34 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-light navbar-expand-sm fixed-top navbar-color">
-      <a class="navbar-brand" id="nav-text" href="#">
+      <a class="navbar-brand" id="nav-text">
         <img src="/static/images/sf_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Snow Day
       </a>
-      <ul class="nav navbar-nav ml-auto" id="nav-text">  
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        {% if session['username'] %}
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbar-list-2">
+        <ul class="nav navbar-nav ml-auto" id="nav-text">  
           <li class="nav-item active">
-            <a class="nav-link login_activated" href="/users_choice">Generate Patterns</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link login_activated" href="/user_patterns">View Your Patterns</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link login_activated" href="/logout">Logout</a>
-          </li>
-        {% endif %}    
- 
-      </ul>
+          {% if session['username'] %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/users_choice">Generate Patterns</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/user_patterns">View Your Patterns</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          {% endif %}    
+  
+        </ul>
+      </div>  
     </nav>
       <div class="container">
           {% for msg in get_flashed_messages() %}

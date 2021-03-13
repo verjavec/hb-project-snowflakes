@@ -7,13 +7,6 @@
         "end_seq": "ch 1, hdc in top of starting ch3"
     },
     {
-        "sfround_no": 3,
-        "seq_num_branches": 0,
-        "beg_seq": "ch 1",
-        "sequence": "ch 3, dc in 1st sc",
-        "end_seq": "sc in sp, ch 6"
-    },
-    {
         "sfround_no": 4,
         "seq_num_branches": 1,
         "beg_seq": "ch 1",
@@ -93,9 +86,9 @@
     {
         "sfround_no": 2,
         "seq_num_branches": 3,
-        "beg_seq": "ch 8, sl st in 5th ch from hook, dc in ring",
-        "sequence": "ch 9, (dtr, ch 5, sl st) in 6th ch from hook, ch 7, sc in 2nd ch from hook and in next 3 chs, ch 8, (tr, ch 4, sl st) in 5th ch from hook, ch 6, (dtr, ch 4, sl st) in base of tr, sl st in next 3 chs, ch 5, sc in 2nd ch from hook and next 3 chs, sl st in free loop of ch at base of next sc and in next 2 chs, ch 6, (dtr, ch 5, sl st) in 6th ch from hook, sl st in free loop of ch at base of next dtr and in next 2 chs, ch 1",
-        "end_seq": "repeat previous sequence from * to *, dc in ring, join with sl st to 3rd ch of beginning ch8"
+        "beg_seq": "ch 3",
+        "sequence": "ch 5, sl st in 5th ch from hook, dc in ring, ch 9, (dtr, ch 5, sl st) in 6th ch from hook, ch 7, sc in 2nd ch from hook and in next 3 chs, ch 8, (tr, ch 4, sl st) in 5th ch from hook, ch 6, (dtr, ch 4, sl st) in base of tr, sl st in next 3 chs, ch 5, sc in 2nd ch from hook and next 3 chs, sl st in free loop of ch at base of next sc and in next 2 chs, ch 6, (dtr, ch 5, sl st) in 6th ch from hook, sl st in free loop of ch at base of next dtr and in next 2 chs, ch 1, 2 dc in ring",
+        "end_seq": "join with sl st to top of beginning ch 3"
     },
     {
         "sfround_no": 2,

@@ -4,8 +4,14 @@
 {% block body %}
     <h1>All Patterns for {{ session['username'] }}</h1>
     
+
     <div id="list" class="box">
+        {% if user_patterns == [] %}
+            <div class="row">You don't currently have any patterns. Click Generate Pattern to get started.</div>
+        {% endif %}
+
         {% for pattern in user_patterns %}
+    
         <div class="row">
             <div class="d-inline-flex" id="sf_col">
                 <a href = "/patterns/{{ pattern.pattern_id }}">

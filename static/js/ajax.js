@@ -34,8 +34,9 @@ $('#date-completed').on('submit', (evt) => {
     // Send formData to the server (becomes a query string)
     $.get('/deletion', formData, (res) => {
       console.log("delete-pattern");
-      $('#printed-pattern').text(`${res.pattern_id}`);
-
+      $('#patt').text(`${res.pattern_id}`);
+      $('#printed-pattern').text("");
+      
     });
   });
 
@@ -54,6 +55,7 @@ var myWidget = cloudinary.createUploadWidget({
       // console.log(imageData);
       $.get('/add_photo', imageData, (res) => {
         // console.log('add-photo');
+        $('#photo').css('visibility', 'visible')
         $('#photo').attr('src', `${res.image_url}`);
       });
     }

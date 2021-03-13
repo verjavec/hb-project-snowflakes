@@ -160,6 +160,7 @@ def show_pattern(pattern_id):
 
     pattern = crud.get_pattern_by_id(pattern_id)
     sfrounds = crud.get_sfrounds_by_sfround_ids(pattern_id)
+    
     return render_template('pattern_details.html', pattern=pattern, sfrounds=sfrounds)
 
 @app.route('/user_patterns')
@@ -168,6 +169,8 @@ def all_patterns_for_user():
 
     user_id = session['user_id']
     user_patterns = crud.get_patterns_by_user_id(user_id)
+    print('*****All patterns for a user*****')
+    print(user_patterns)
     
     return render_template('user_patterns.html', user_patterns=user_patterns)
 

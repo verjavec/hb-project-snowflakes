@@ -10,51 +10,51 @@
         The example shows the choices and how many that the example has of each choice.
     </h5>
     
-    <div class="box">
-        <div class="d-inline-flex flex-row justify-content-left" id="select_choices">
-            <div class="flex-grow-1">
-                
-                <form id="get-choices" action='/get_choices'>
-                    <h6>Select Choices</h6>
-                    <div class="select-choices" id='num-rounds'>
-                        <select id="num-rounds" name="num_rounds">
-                            <option value="">Choose the number of rounds</option>
-                                {% for r in range(2, 5) %}
-                                    <option value="{{ r }}">{{ r }}</option>
-                                {% endfor %}
-                        </select>
-                    </div>  
+    <div class="row box justify-content-left text-left">
         
-                    <div class="select-choices" id="num-points">
-                        <select id="num-points" name="num_points">
-                            <option value="">Choose the number of points</option>
-                                {% for p in range(5, 9) %}
-                                    <option value="{{ p }}">{{ p }}</option>
-                                {% endfor %}
-                        </select>
-                    </div>  
+        <div class="col-4 mr-center align-self-center">
+            
+            <form id="get-choices" action='/get_choices'>
+                <h5>Select Choices</h5>
+                <div class="row select-choices" id='num-rounds'>
+                    <select id="num-rounds" name="num_rounds">
+                        <option value="">Choose the number of rounds</option>
+                            {% for r in range(2, 5) %}
+                                <option value="{{ r }}">{{ r }}</option>
+                            {% endfor %}
+                    </select>
+                </div>  
+    
+                <div class="row select-choices" id="num-points">
+                    <select id="num-points" name="num_points">
+                        <option value="">Choose the number of points</option>
+                            {% for p in range(5, 9) %}
+                                <option value="{{ p }}">{{ p }}</option>
+                            {% endfor %}
+                    </select>
+                </div>  
 
-                    <div class="select-choices" id="num-branches">
-                        <select id="num-branches" name="num_branches">
-                            <option value="">Choose the number of branches</option>
-                                {% for n in range(0, 5) %}
-                                    <option value="{{ n }}">{{ n }}</option>
-                                {% endfor %}
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <input type="submit">
-                    </div>
-                </form>
-            </div>    
+                <div class="row select-choices" id="num-branches">
+                    <select id="num-branches" name="num_branches">
+                        <option value="">Choose the number of branches</option>
+                            {% for n in range(0, 5) %}
+                                <option value="{{ n }}">{{ n }}</option>
+                            {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="row">
+                    <input type="submit">
+                </div>
+            </form>
+        </div>    
             
             
     
-            <div class="flex-grow-1" id="choice_img">
-                <img class="img-fluid" src="/static/images/snowflake.png">
-            </div>
+        <div class="col-6 ml-auto align-self-center" id="choice_img">
+            <img class="img-fluid" src="/static/images/snowflake.png" alt="snowflake showing rounds are how many times around, points are the number of spokes sticking out from the center, and branches are barbs sticking out towards the end of the points">
         </div>
+        
     </div>
     
 

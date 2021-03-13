@@ -59,7 +59,7 @@ def create_pattern(num_rounds, num_branches, num_points):
     """Create and return a new pattern."""
 
     user_id = session['user_id']
-    image_url = "/static/images/default_image.png"
+    image_url = "None"
     pattern = Pattern(user_id=user_id, num_rounds=num_rounds, 
                     num_branches=num_branches, num_points=num_points, 
                     image_url=image_url)
